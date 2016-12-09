@@ -4379,7 +4379,7 @@ Transform:
   m_LocalScale: {x: 3.59332657, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1612799171}
-  m_RootOrder: 18
+  m_RootOrder: 4
 --- !u!23 &534297777
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10290,6 +10290,7 @@ Transform:
   - {fileID: 1360476755}
   - {fileID: 1365639826}
   - {fileID: 1391103568}
+  - {fileID: 534297776}
   - {fileID: 941320446}
   - {fileID: 23458962}
   - {fileID: 748443784}
@@ -10304,7 +10305,6 @@ Transform:
   - {fileID: 569091158}
   - {fileID: 2015797498}
   - {fileID: 2085035597}
-  - {fileID: 534297776}
   - {fileID: 1628336470}
   - {fileID: 214592289}
   - {fileID: 582978257}
@@ -10552,6 +10552,7 @@ GameObject:
   - 114: {fileID: 1634330364}
   - 114: {fileID: 1634330363}
   - 114: {fileID: 1634330362}
+  - 114: {fileID: 1634330367}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10659,6 +10660,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.16064107, y: 4.72359705, z: 1.10515785}
   m_Center: {x: -.0804920197, y: -1.16076267, z: .141172409}
+--- !u!114 &1634330367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1634330360}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439bc0050849be14792fa56f039587b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Window_Senter: {x: 0, y: 0}
 --- !u!54 &1634330368
 Rigidbody:
   m_ObjectHideFlags: 0

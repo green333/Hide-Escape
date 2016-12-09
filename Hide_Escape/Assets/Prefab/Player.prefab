@@ -118,6 +118,7 @@ GameObject:
   - 114: {fileID: 11475094}
   - 114: {fileID: 11418764}
   - 114: {fileID: 11485436}
+  - 114: {fileID: 11479460}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -628,6 +629,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorFile: {fileID: 4900000, guid: 24d2ea8b1ede3764db610de604b68955, type: 3}
   KeyFile: {fileID: 4900000, guid: 5ed2a5eff11e11c4ba8896ebef4b003f, type: 3}
+--- !u!114 &11479460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439bc0050849be14792fa56f039587b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Window_Senter: {x: 0, y: 0}
 --- !u!114 &11485436
 MonoBehaviour:
   m_ObjectHideFlags: 1

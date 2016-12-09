@@ -1215,6 +1215,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11479460, guid: 3ca6bb07a839ea34e9f2e2f833198e61, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ca6bb07a839ea34e9f2e2f833198e61, type: 2}
   m_IsPrefabParent: 0
@@ -2115,7 +2119,7 @@ Transform:
   m_LocalScale: {x: .15545094, y: .155450925, z: .155450925}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!135 &2018900391
 SphereCollider:
   m_ObjectHideFlags: 0

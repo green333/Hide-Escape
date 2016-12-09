@@ -726,12 +726,20 @@ public class P_Player : MonoBehaviour
      */
 
     public bool Contact_Collision = false;
+    PopUp pop= null;
     void OnCollisionEnter(Collision col)
     {
         Debug.Log(col.gameObject.name + "と接触");
         Contact_Collision = true;
         param.movement = Vector3.zero;
 
+        //敵との接触判定　＝＝死亡判定
+        if (col.gameObject.tag == "Hide_Object")
+        {
+            pop = GetComponent<PopUp>();
+            pop.SetText(" Aキー|| SPACE：隠れる ");//仮
+            pop.Activate();
+        }
         //敵との接触判定　＝＝死亡判定
         if (col.gameObject.tag == "Enemy")
         {
@@ -743,11 +751,11 @@ public class P_Player : MonoBehaviour
         {
             Clear_prosess();
             return;
+            ;
         }
         //シーン移動判定
         else if (col.gameObject.tag == "ChengeScene")
         {
-            Debug.Log(col.gameObject.name + "と接触");
             ChengeScene_Proasess(col.gameObject.name.ToString());
             return;
         }
@@ -757,14 +765,21 @@ public class P_Player : MonoBehaviour
     {
 
         Debug.Log("接触中");
+
+      
+
+
+
         param.movement = Vector3.zero;
         Contact_Collision = false;
 
+      
     }
     void OnCollisionExit(Collision col)
     {
         Contact_Collision = false;
-
+        pop = GetComponent<PopUp>();
+        pop.Deactivate();
     }
     //**********************************************************************
     //                  ステート切り替え関連　主に　Action関数・Update関数　にて使用
