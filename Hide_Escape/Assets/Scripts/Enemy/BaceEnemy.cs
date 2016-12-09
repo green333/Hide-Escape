@@ -1,0 +1,174 @@
+﻿using UnityEngine;
+
+using System.Collections;
+
+
+
+public class BaceEnemy : MonoBehaviour
+{
+    [SerializeField]
+    private NavMeshAgent agent;
+
+    public Vector3[] wp;  //アタッチした物体を徘徊させるためのpos
+
+    [SerializeField]
+    private GameObject[] obj=null; //徘徊用オブジェクト
+
+    [SerializeField]
+    private GameObject target=null; //プレイヤー
+
+    public float rotMax; //回転量
+    
+
+    public int wpState = 0; //waitpointの配列数
+    public int size;
+
+    public float speed; //移動量
+
+    [SerializeField]
+    private float view_length=0; //視野距
+
+    [SerializeField]
+    private float view_angle = 0; //視野角
+
+    public float WaitTime =0.0f; //待機時間
+
+    float time = 0.0f;   //タイマー
+
+    public float rot_z;
+
+    public bool tracking_flag; 
+   
+    enum State //行動分岐
+    {
+        Patrol,
+        Tracking,
+        Lost_Search
+    };
+
+
+    [SerializeField]
+    private State state=State.Patrol; 
+
+    void Start()
+    {
+        //徘徊用のゲームオブジェクトの座標をwaitpointの座標に入れる
+        for (int i = 0; i < size; i++)
+        {
+            wp[i] = obj[i].transform.position;
+            transform.position = wp[i];
+        }
+
+        tracking_flag = false;
+    }
+
+    void Update()
+    {
+      switch (state) {
+
+        case State.Patrol: //徘徊
+                     
+            Patrol();
+                        
+            break;
+
+         case State.Tracking: //プレイヤーを見つけて追いかける
+
+            Tracking();
+
+            break;
+
+          case State.Lost_Search: //プレイヤーを見失いその場で停止する
+
+            LostSearch();
+
+            break;
+
+       }
+    }
+
+
+    public void Patrol()
+    {
+        agent.SetDestination(wp[wpState]);
+
+        if (Vector3.Distance(transform.position, wp[wpState]) <= 0.5f)
+        {
+            wpState++;
+            if (wpState >= size)
+            {
+                wpState = 0;
+                
+            }
+        }
+        else
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(wp[wpState] - transform.position), 2f);
+            transform.position += transform.forward * speed;
+        }
+
+        if (IsDiscoveryTarget())
+        {
+            state = State.Tracking;
+        }
+
+    }
+
+    public bool IsDiscoveryTarget()
+    {
+
+       
+
+        Vector3 target_Vec=target.transform.position-transform.position;
+        float angle = Vector3.Angle(transform.forward, target_Vec);
+        Debug.DrawRay(transform.position, target_Vec, Color.black, 0, false);
+
+        if (angle <= view_angle)
+        {
+
+            if(target_Vec.magnitude<view_length)
+            {
+                Debug.DrawRay(transform.position, target_Vec, Color.blue, 0, false);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+  public void Tracking()
+    {
+        tracking_flag = false;
+        agent.Resume();
+        transform.LookAt(target.transform.position);
+
+        agent.SetDestination(target.transform.position);
+        if (IsDiscoveryTarget() != true)
+        {
+           
+            state = State.Lost_Search;
+
+        }
+
+    }
+
+    public void LostSearch()
+    {
+      
+        time = time + Time.deltaTime;
+
+        rot_z += Time.deltaTime * 45;
+
+        transform.rotation = Quaternion.Euler(0, rot_z, 0);
+
+        if (time>=WaitTime)
+        {
+            time = 0.0f;
+            state = State.Patrol;
+            tracking_flag = true;
+
+        }
+    }
+}
+

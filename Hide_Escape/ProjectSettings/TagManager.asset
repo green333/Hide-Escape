@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - KEY
+  - DOOR
+  - CLEAR
+  - ChengeScene
+  - Hide_Object
   layers:
   - Default
   - TransparentFX
