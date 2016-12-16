@@ -79,6 +79,7 @@ public class MoveSceneFloor : Scene {
             flg = true;
             fade.SetFade(Screenfade.FadeType.Type.OUT, fadeSpeed);
             type = TriggerType.NEXT_TRIGGER;
+            GetComponent<DoorManager>().SaveActiveKeyData();
             GetComponent<P_Player>().IS_NEXTSTAGE = false;
         }
         else if (GetComponent<P_Player>().IS_PREVSTAGE)
