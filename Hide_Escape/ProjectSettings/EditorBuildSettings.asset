@@ -16,6 +16,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Third_Floor.unity
   - enabled: 1
-    path: Assets/Scene/GameOverScene.unity
-  - enabled: 1
-    path: Assets/Scene/GameClearScene.unity
+    path: Assets/Scene/GameOver/GameOver.unity
