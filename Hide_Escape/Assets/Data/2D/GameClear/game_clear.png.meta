@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 349114d2851ee0d4281b9083ed17f150
-timeCreated: 1476419674
+guid: 8b762eee6c59264419821210d6c118fd
+timeCreated: 1481968003
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    8900000: generatedCubemap
+    21300000: game_clear_7
+    21300002: game_clear_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,35 +23,55 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 6
-  cubemapConvolution: 1
+  generateCubemap: 0
+  cubemapConvolution: 0
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
-  seamlessCubemap: 1
+  seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 2
-    aniso: 0
-    mipBias: 0
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
     wrapMode: 1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
-  compressionQuality: 100
+  compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: 3
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: game_clear_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 449
+        width: 259
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: game_clear_8
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 428
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

@@ -16,12 +16,12 @@ public class TitleScene : Scene
 
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	new void Update () 
   {
     if( Input.GetButtonDown( "Botton_A" ) )
     {
