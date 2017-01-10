@@ -16,4 +16,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Third_Floor.unity
   - enabled: 1
+    path: Assets/Scene/Return_Second_Floor.unity
+  - enabled: 1
+    path: Assets/Scene/Return_First_Floor.unity
+  - enabled: 1
     path: Assets/Scene/GameOver/GameOver.unity

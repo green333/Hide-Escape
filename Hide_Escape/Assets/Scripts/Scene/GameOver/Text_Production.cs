@@ -153,29 +153,31 @@ public class Text_Production : MonoBehaviour {
     {
 
 
-        if (Input.GetKeyDown(KeyCode.Keypad0) && !enterflg && com == Command.END)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !enterflg && com == Command.END)
         {
-            audio.PlaySE("Select");
-
-            Indication(Command.CONTINUE);
+            Indication(Command.CONTINUE,true);
             com = Command.CONTINUE;
         }
 
-        if(Input.GetKeyDown(KeyCode.Keypad1) && !enterflg && com == Command.CONTINUE)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !enterflg && com == Command.CONTINUE)
         {
-            audio.PlaySE("Select");
-            Indication(Command.END);
+            Indication(Command.END,true);
             com = Command.END;
         }
 
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            audio.PlaySE("Decision");
+           audio.PlaySE("Decision");
             enterflg = true;
         }
 
-        if (enterflg)
+        Decision(enterflg);    //決定後
+    }
+
+    void Decision(bool decision)
+    {
+        if (decision)
         {
             switch (com)
             {
@@ -188,7 +190,6 @@ public class Text_Production : MonoBehaviour {
                     break;
             }
         }
-
     }
 
     //---------------------------------
@@ -198,8 +199,13 @@ public class Text_Production : MonoBehaviour {
     //  引数：表示するコマンドを入れる
 
     //---------------------------------
-    void Indication(Command com)
+    void Indication(Command com,bool se_ring)
     {
+        if (se_ring)
+        {
+            audio.PlaySE("Select");
+        }
+
         switch (com)
         {
             case Command.CONTINUE:
@@ -212,6 +218,7 @@ public class Text_Production : MonoBehaviour {
                 select_on[(int)Command.END].enabled = true;
                 break;
         }
+
     }
 
 
@@ -329,7 +336,7 @@ public class Text_Production : MonoBehaviour {
 
                     if(text_pro[i].color.a > 1)
                     {
-                        Indication(Command.CONTINUE);
+                        Indication(Command.CONTINUE,false);
                         pro = Pro_Status.OPERABLE;
                     }
                 }
