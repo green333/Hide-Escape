@@ -61,7 +61,7 @@ public class MoveSceneFloor : Scene {
                 break;
 
             case TriggerType.GAMEOVER_TRIGGER:
-                ChangeScene("GameOverScene");
+                ChangeScene("GameOver");
                 break;
                 
             case TriggerType.GAMECLERE_TRIGGER:
