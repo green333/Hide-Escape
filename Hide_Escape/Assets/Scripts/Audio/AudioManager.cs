@@ -10,6 +10,10 @@ public class AudioManager : MonoBehaviour {
 
     private Dictionary<string, AudioClip> _seDic;
 
+    private float volume;
+
+    private bool loop;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -31,6 +35,18 @@ public class AudioManager : MonoBehaviour {
 	}
 
 
+    void SetVolume(float volume)
+    {
+        SESource.volume = volume;
+    }
+
+    float GetVolume()
+    {
+        return SESource.volume;
+    }
+
+
+
     /// <summary>
     /// 指定したSEを流す
     /// </summary>
@@ -43,7 +59,12 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
-        SESource.PlayOneShot(_seDic[name] as AudioClip);
+
+        SESource.PlayOneShot(_seDic[name] as AudioClip, volume);
+        
     }
+
+
+
 
 }
