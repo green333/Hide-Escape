@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour {
 
     private Dictionary<string, AudioClip> _seDic;
 
-    private float volume;
+    private float volume = 1;
 
     private bool loop;
 
@@ -25,7 +25,6 @@ public class AudioManager : MonoBehaviour {
         foreach(AudioClip se in seList)
         {
             _seDic[se.name] = se;
-            Debug.Log(se.name);
         }
 
     }
