@@ -5,6 +5,10 @@ public class PlayerOffSet : MonoBehaviour {
 
     static MoveSceneFloor.TriggerType type;     //  移動前のフロアのトリガー保存用
     
+    public int flg = 0;
+
+    public string a;
+
 	// Use this for initialization
 	void Start () {
         switch(type)
@@ -13,9 +17,11 @@ public class PlayerOffSet : MonoBehaviour {
                 break;
             case MoveSceneFloor.TriggerType.NEXT_TRIGGER:
                 NextTriggerOffSet();
+                flg = 1;
                 break;
             case MoveSceneFloor.TriggerType.RETURN_TRIGGER:
                 ReturnTriggerOffSet();
+                flg = 2;
                 break;
 
         }
@@ -35,43 +41,65 @@ public class PlayerOffSet : MonoBehaviour {
     //  次のシーンに行くときのトリガーでのプレイヤーのセット
     private void NextTriggerOffSet()
     {
+        a = "いいいいい";
         //  現在のシーンの名前でプレイヤーの設置場所を決める
         switch(Application.loadedLevelName)
         {
             case "First_Floor":
                 SetPosition(new Vector3(0.06f, 1.07f, 3.36f));
+                a = Application.loadedLevelName;
                 break;
             case "Second_Floor":
                 SetPosition(new Vector3(4.46f, 1.07f, -9.49f));
+                a = Application.loadedLevelName;
                 break;
-            case "Thard_Floor":
+            case "Third_Floor":
                 SetPosition(new Vector3(4.07f, 1.22f, -2.99f));
+                a = Application.loadedLevelName;
                 break;
-
+            case "Return_Second_Floor":
+                SetPosition(new Vector3(-7.11f, 1.21f, 0.77f));
+                a = Application.loadedLevelName;
+                break;
+            case "Return_First_Floor":
+                SetPosition(new Vector3(12.22f, 1.07f, -1.45f));
+                a = Application.loadedLevelName;
+                break;
         }
     }
 
     //  前のシーンに戻るときのトリガーでのプレイヤーのセット
     private void ReturnTriggerOffSet()
     {
+        a = "ああああ";
         //  現在のシーンの名前でプレイヤーの設置場所を決める
         switch (Application.loadedLevelName)
         {
             case "First_Floor":
                 SetPosition(new Vector3(0.06f, 1.07f, -9.45f));
+                a = Application.loadedLevelName;
                 break;
             case "Second_Floor":
                 SetPosition(new Vector3(15.02f, 1.07f, -7.52f));
+                a = Application.loadedLevelName;
                 break;
-            case "Thard_Floor":
+            case "Third_Floor":
                 SetPosition(new Vector3(-6.17f, 1.22f, 2.76f));
+                a = Application.loadedLevelName;
                 break;
-
+            case "Return_Second_Floor":
+                SetPosition(new Vector3(-7.11f, 1.21f, 0.77f));
+                a = Application.loadedLevelName;
+                break;
+            case "Return_First_Floor":
+                SetPosition(new Vector3(-7.11f, 1.21f, 0.77f));
+                a = Application.loadedLevelName;
+                break;
         }
     }
 
     private void SetPosition(Vector3 pos)
     {
-        GetComponent<P_Player>().transform.position = pos;
+        transform.position = pos;
     }
 }
