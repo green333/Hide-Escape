@@ -61,6 +61,8 @@ public class DoorManager : MonoBehaviour
         LoadActiveKeyData("First_Floor");
         LoadActiveKeyData("Second_Floor");
         LoadActiveKeyData("Third_Floor");
+        LoadActiveKeyData("Return_Second_Floor");
+        LoadActiveKeyData("Return_First_Floor");
     }
 
     //----------------------------------------------------------------------------
@@ -119,6 +121,8 @@ public class DoorManager : MonoBehaviour
             SaveActiveKeyData(i, "First_Floor");
             SaveActiveKeyData(i, "Second_Floor");
             SaveActiveKeyData(i, "Third_Floor");
+            SaveActiveKeyData(i, "Return_Second_Floor");
+            SaveActiveKeyData(i, "Return_First_Floor");
         }
     }
     private void SaveActiveKeyData(int n, string sceneName)
@@ -143,6 +147,8 @@ public class DoorManager : MonoBehaviour
             PlayerPrefs.DeleteKey("First_Floor" + i);
             PlayerPrefs.DeleteKey("Second_Floor" + i);
             PlayerPrefs.DeleteKey("Third_Floor" + i);
+            PlayerPrefs.DeleteKey("Return_Second_Floor" + i);
+            PlayerPrefs.DeleteKey("Return_First_Floor" + i);
         }
     }
 
