@@ -162,7 +162,7 @@ public class DoorManager : MonoBehaviour
             if (key[i].obj.activeInHierarchy) { continue; }
 
             if (_isOpen
-                || Input.GetKeyDown(KeyCode.KeypadEnter))
+                || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Botton_B"))
             {
                 door[i].animator.Play("Open");
                 door[i].collider.isTrigger = true;

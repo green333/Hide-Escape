@@ -58,7 +58,7 @@ public class PlayerOffSet : MonoBehaviour {
                 a = Application.loadedLevelName;
                 break;
             case "Return_Second_Floor":
-                SetPosition(new Vector3(-7.11f, 1.21f, 0.77f));
+                SetPosition(new Vector3(-15.0f, 1.07f, 0.18f));
                 a = Application.loadedLevelName;
                 break;
             case "Return_First_Floor":
