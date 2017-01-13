@@ -3,11 +3,13 @@ using System.Collections;
 
 public class VacuumGimic : MonoBehaviour {
 
-    public GameObject player;           //  プレイヤーのゲームオブジェクト
+    public GameObject player;               //  プレイヤーのゲームオブジェクト
 
-    public float vacuumSpeed = 1.0f;    //  プレイヤーを吸い込むスピード
+    public float vacuumSpeed = 1.0f;        //  プレイヤーを吸い込むスピード
 
-    private bool vacuumflg;             //  プレイヤー吸い込みフラグ
+    private bool vacuumflg;                 //  プレイヤー吸い込みフラグ
+
+    private float holeScale = 0.01f;   //  ワープホールの大きさを変えるスピード
 
 	// Use this for initialization
 	void Start () {
@@ -23,10 +25,18 @@ public class VacuumGimic : MonoBehaviour {
         //  吸い込みフラグが立っていたら
         if (vacuumflg)
         {
+            ScaleChange();
             transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f), 10.5f);
             VacuumPlayer(vt);
         }
 	}
+
+    //  ワープホールの大きさチェンジ
+    private void ScaleChange()
+    {
+        if (holeScale <= 0.62f) { holeScale += 0.01f; }
+        transform.localScale = new Vector3(holeScale, holeScale, holeScale);
+    }
 
     //  プレイヤーを吸い込む
     private void VacuumPlayer(Vector3 playerVec)
