@@ -771,6 +771,11 @@ public class P_Player : MonoBehaviour
             pop.Activate(60);
         }
 
+        if(col.gameObject.tag=="DOOR"){
+        
+        
+        
+        }
         
 
     }
@@ -778,10 +783,6 @@ public class P_Player : MonoBehaviour
     {
 
         Debug.Log("接触中");
-
-      
-
-
 
         param.movement = Vector3.zero;
         Contact_Collision = false;
