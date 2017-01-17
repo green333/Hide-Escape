@@ -3,20 +3,32 @@ using System.Collections;
 
 using System.Collections.Generic;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : Singleton<AudioManager>
+{
+
+
 
     public AudioSource SESource;   //
+    public AudioSource BGMSource;   //
+
+    [SerializeField]
+    private string bgm_name;   //BGMの名前
 
 
     private Dictionary<string, AudioClip> _seDic;
+    private Dictionary<string, AudioClip> _bgmDic;
 
-    private float volume = 1;
+    private float volume = 1;                        //音量
 
-    private bool loop;
+    public enum Audio
+    {
+        BGM = 0,
+        SE,
+    }
+
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
 
         _seDic = new Dictionary<string, AudioClip>();
 
@@ -27,29 +39,106 @@ public class AudioManager : MonoBehaviour {
             _seDic[se.name] = se;
         }
 
+        _bgmDic = new Dictionary<string, AudioClip>();
+
+        object[] bgmList = Resources.LoadAll("Audio/BGM");
+
+        foreach(AudioClip bgm in bgmList)
+        {
+            _bgmDic[bgm.name] = bgm;
+        }
+
+
+        PlayerBGM();
     }
 
 	void Update () {
-	
+
+        if(BGMSource.isPlaying == false)
+        {
+            PlayerBGM();
+        }
 	}
 
-
-    void SetVolume(float volume)
+    bool Play_End()
     {
-        SESource.volume = volume;
+        if(BGMSource.isPlaying == false)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
+    //-------------------------------------------
+
+    //  ボリュームをセット
+
+    //-------------------------------------------
+    public void SetVolume(Audio audio, float volume)
+    {
+        switch (audio)
+        {
+            case Audio.BGM:
+                BGMSource.volume = volume;
+                break;
+
+            case Audio.SE:
+                SESource.volume = volume;
+                break;
+        }
+    }
+
+
+    //-------------------------------------------
+
+    //  ピッチのセット
+
+    //-------------------------------------------
+    public void SetPitch(Audio audio, float pitch)
+    {
+        switch (audio)
+        {
+            case Audio.BGM:
+                BGMSource.pitch = pitch;
+                break;
+
+            case Audio.SE:
+                SESource.pitch = pitch;
+                break;
+        }
+
+    }
+
+    //-------------------------------------------
+
+    //  ピッチの取得
+
+    //-------------------------------------------
+    float GetPitch()
+    {
+        return BGMSource.pitch;
+    }
+
+    //-------------------------------------------
+
+    //  ボリュームを取得
+
+    //-------------------------------------------
     float GetVolume()
     {
-        return SESource.volume;
+        return BGMSource.volume;
     }
 
 
 
-    /// <summary>
-    /// 指定したSEを流す
-    /// </summary>
-    /// <param name="name"></param>
+    //-------------------------------------------
+
+    //  一回だけSEを鳴らす
+
+    //-------------------------------------------
     public void PlaySE(string name)
     {
         if (!_seDic.ContainsKey(name))
@@ -61,6 +150,18 @@ public class AudioManager : MonoBehaviour {
 
         SESource.PlayOneShot(_seDic[name] as AudioClip, volume);
         
+    }
+
+
+    public void PlayerBGM()
+    {
+        if (!_bgmDic.ContainsKey(bgm_name))
+        {
+            Debug.Log(bgm_name + "という名前のBGMはありません");
+            return;
+        }
+
+        BGMSource.PlayOneShot(_bgmDic[bgm_name] as AudioClip,volume);
     }
 
 
