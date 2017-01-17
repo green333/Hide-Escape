@@ -12,9 +12,14 @@ public class PopUp : MonoBehaviour
      * textは新しいものを設定するたびに　初期化を行い　その後設定します
     */
 
-    private string text; //これに代入された文字列を表示
+    public  string text; //これに代入された文字列を表示
 
     public Vector2 Window_Senter;
+
+    private int Timer;
+
+    public bool TimeEraseMode = false;
+
     void OnGUI()
     {
 
@@ -28,10 +33,25 @@ public class PopUp : MonoBehaviour
         Window_Senter.x = Screen.width ;
         Window_Senter.y = Screen.height ;
 
+
+
+        if (TimeEraseMode)
+        {
+
+            if (Timer < 0)
+            {
+                Deactivate();
+
+            }
+            else Timer--;
+
+        }
+
     }
 
     public bool SetText(string txt)
     {
+        
        // text.Remove(0);
         text = txt;
         return true;
@@ -43,8 +63,17 @@ public class PopUp : MonoBehaviour
     public void Activate() {
         this.enabled = true; ;
     }
+
+    public void Activate(int EraseTime)
+    {
+        Timer = EraseTime;
+        TimeEraseMode = true;
+        this.enabled = true;
+    }
+
     public void Deactivate() {
         this.enabled = false;
+        TimeEraseMode = false; ;
     }
 
 }
