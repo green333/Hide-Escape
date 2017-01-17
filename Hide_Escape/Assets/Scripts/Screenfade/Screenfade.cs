@@ -235,6 +235,8 @@ public class Screenfade : MonoBehaviour
     color.g = ToColorRange( g );
     color.b = ToColorRange( b );
 
+    _color = color;
+
     //  フェードの動作の種類に応じて、不透明度を設定
     switch( type_ )
     {
@@ -268,6 +270,7 @@ public class Screenfade : MonoBehaviour
     color.g = ToColorRange( g );
     color.b = ToColorRange( b );
 
+    _color = color;
 
     // フェードの動作の種類に応じて、不透明度を設定
     switch( type )

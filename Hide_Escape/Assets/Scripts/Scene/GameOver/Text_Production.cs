@@ -70,11 +70,6 @@ public class Text_Production : MonoBehaviour {
 
 
     [SerializeField]
-    private AudioManager audio;
-
-
-
-    [SerializeField]
     float up_spd;
 
     private Vector2 pos;
@@ -168,7 +163,7 @@ public class Text_Production : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-           audio.PlaySE("Decision");
+           AudioManager.Instance.PlaySE("Decision");
             enterflg = true;
         }
 
@@ -203,7 +198,7 @@ public class Text_Production : MonoBehaviour {
     {
         if (se_ring)
         {
-            audio.PlaySE("Select");
+            AudioManager.Instance.PlaySE("Select");
         }
 
         switch (com)
