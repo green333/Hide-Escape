@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: ff9b6f26741d6814a8cbafd435cc49b5
+timeCreated: 1484120688
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Baseboard
+    100002: //RootNode
+    100004: Door
+    100006: Door.001
+    100008: Door.002
+    100010: Door.003
+    100012: Door_Group
+    100014: Door_Group.001
+    100016: Door_Group.002
+    100018: Door_Group.003
+    100020: DoorFrame
+    100022: DoorFrame.001
+    100024: DoorFrame.002
+    100026: DoorFrame.003
+    100028: Floor
+    100030: Handle_Back
+    100032: Handle_Back.001
+    100034: Handle_Back.002
+    100036: Handle_Back.003
+    100038: Handle_Front
+    100040: Handle_Front.001
+    100042: Handle_Front.002
+    100044: Handle_Front.003
+    100046: Room
+    400000: Baseboard
+    400002: //RootNode
+    400004: Door
+    400006: Door.001
+    400008: Door.002
+    400010: Door.003
+    400012: Door_Group
+    400014: Door_Group.001
+    400016: Door_Group.002
+    400018: Door_Group.003
+    400020: DoorFrame
+    400022: DoorFrame.001
+    400024: DoorFrame.002
+    400026: DoorFrame.003
+    400028: Floor
+    400030: Handle_Back
+    400032: Handle_Back.001
+    400034: Handle_Back.002
+    400036: Handle_Back.003
+    400038: Handle_Front
+    400040: Handle_Front.001
+    400042: Handle_Front.002
+    400044: Handle_Front.003
+    400046: Room
+    2300000: Baseboard
+    2300002: Door
+    2300004: Door.001
+    2300006: Door.002
+    2300008: Door.003
+    2300010: DoorFrame
+    2300012: DoorFrame.001
+    2300014: DoorFrame.002
+    2300016: DoorFrame.003
+    2300018: Floor
+    2300020: Handle_Back
+    2300022: Handle_Back.001
+    2300024: Handle_Back.002
+    2300026: Handle_Back.003
+    2300028: Handle_Front
+    2300030: Handle_Front.001
+    2300032: Handle_Front.002
+    2300034: Handle_Front.003
+    2300036: Room
+    3300000: Baseboard
+    3300002: Door
+    3300004: Door.001
+    3300006: Door.002
+    3300008: Door.003
+    3300010: DoorFrame
+    3300012: DoorFrame.001
+    3300014: DoorFrame.002
+    3300016: DoorFrame.003
+    3300018: Floor
+    3300020: Handle_Back
+    3300022: Handle_Back.001
+    3300024: Handle_Back.002
+    3300026: Handle_Back.003
+    3300028: Handle_Front
+    3300030: Handle_Front.001
+    3300032: Handle_Front.002
+    3300034: Handle_Front.003
+    3300036: Room
+    4300000: DoorFrame.003
+    4300002: Door.003
+    4300004: Handle_Back.003
+    4300006: Handle_Front.003
+    4300008: DoorFrame.002
+    4300010: Door.002
+    4300012: Handle_Back.002
+    4300014: Handle_Front.002
+    4300016: DoorFrame.001
+    4300018: Door.001
+    4300020: Handle_Back.001
+    4300022: Handle_Front.001
+    4300024: DoorFrame
+    4300026: Door
+    4300028: Handle_Back
+    4300030: Handle_Front
+    4300032: Room
+    4300034: Floor
+    4300036: Baseboard
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
