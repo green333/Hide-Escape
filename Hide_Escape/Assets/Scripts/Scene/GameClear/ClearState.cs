@@ -3,25 +3,40 @@ using System.Collections;
 
 public class ClearState : MonoBehaviour {
 
-    //[SerializeField]
-    //private GameObject main_camera;   //カメラ
 
     enum Clear_State
     {
-        WAKE_UP = 0,         //ホワイトアウトして目覚める
-        EYES_LOOK_SIDEWAYS,  //目線が横を向く
+        WAKE_UP = 0,           //ホワイトアウトして目覚める
+        EYES_LOOK_SIDEWAYS,    //目線が横を向く
         TARGET_LOOP_ZOOM_IN,   //ターゲットに寄る
-        FIN,
+        FIN,                   //終了
     }
 
     [SerializeField]
-    Clear_State state;
+    private Clear_State state;         //クリアステート
 
-	void Start () {
+
+    private float angle;    //回転
+
+    private float spd = 30.0f;   //回転速度
+
+    private float moved;  //移動値
+
+    //-------------------------------------------
+
+    //  初期化
+
+    //-------------------------------------------
+    void Start () {
 	}
 
 
 
+    //-------------------------------------------
+
+    //  更新
+
+    //-------------------------------------------
     void Update () {
 
 
@@ -40,53 +55,88 @@ public class ClearState : MonoBehaviour {
                 break;
 
             case Clear_State.FIN:
+                Fin();
                 break;
-
         }
 
+
     }
 
-    void SetState(Clear_State st)
+
+
+    //-------------------------------------------
+
+    //  ステートをセット
+
+    //-------------------------------------------
+    void SetState(Clear_State c_state)
     {
-        state = st;
+        state = c_state;
     }
 
-    float angle;    //回転
 
-    float spd = 30.0f;   //回転速度
+    void Zoom_State()
+    {
+        SetState(Clear_State.TARGET_LOOP_ZOOM_IN);
+    }
 
+
+
+    //-------------------------------------------
+
+    //  起き上がる処理
+
+    //-------------------------------------------
     void WakeUp()
     {
-        angle += Time.deltaTime;
 
-        transform.eulerAngles = new Vector3(0, 0, angle * spd);
+        transform.eulerAngles = new Vector3(transform.rotation.x, 
+                                            transform.rotation.y,
+                                            transform.rotation.z + angle * spd);
 
+       
         if (transform.eulerAngles.z > 90)
         {
             angle = 0;
-            SetState(Clear_State.EYES_LOOK_SIDEWAYS);   
+            SetState(Clear_State.EYES_LOOK_SIDEWAYS);
+        }
+        else
+        {
+            angle += Time.deltaTime;
         }
     }
 
+
+    //-------------------------------------------
+
+    //  横を向く
+
+    //-------------------------------------------
     void Look_Sideway()
     {
-        
-        angle += Time.deltaTime;
-
-        transform.eulerAngles = new Vector3(0, angle * spd, 90);
+        transform.eulerAngles = new Vector3(transform.rotation.x,
+                                            transform.rotation.y + angle * spd,
+                                            transform.rotation.z + 90);
 
         if(transform.eulerAngles.y > 90)
         {
-            SetState(Clear_State.TARGET_LOOP_ZOOM_IN);
+            Invoke("Zoom_State", 1);
+            //SetState(Clear_State.TARGET_LOOP_ZOOM_IN);
+        }
+        else
+        {
+            angle += Time.deltaTime;
         }
     }
 
-    float moved;  //移動値
 
+    //-------------------------------------------
 
+    //  注目する（そのオブジェクトに寄る
+    
+    //-------------------------------------------
     void Zoom_In()
     {
-        moved = Time.deltaTime;
 
         transform.position += new Vector3(0, 0, moved);
 
@@ -94,7 +144,20 @@ public class ClearState : MonoBehaviour {
         {
             SetState(Clear_State.FIN);
         }
+        else
+        {
+            moved = Time.deltaTime;
+        }
     }
 
+
+
+    void Fin()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("fin");
+        }
+    }
 
 }
