@@ -7,6 +7,9 @@ using System.Collections;
 public class BaceEnemy : MonoBehaviour
 {
     [SerializeField]
+    private Animator animator = null;
+
+    [SerializeField]
     private NavMeshAgent agent;
 
     public Vector3[] wp;  //アタッチした物体を徘徊させるためのpos
@@ -16,6 +19,12 @@ public class BaceEnemy : MonoBehaviour
 
     [SerializeField]
     private GameObject target=null; //プレイヤー
+
+    [SerializeField]
+    private Rigidbody rigidbody;
+
+    [SerializeField]
+    GameObject gameobject;
 
     public float rotMax; //回転量
     
@@ -53,21 +62,24 @@ public class BaceEnemy : MonoBehaviour
     void Start()
     {
         //徘徊用のゲームオブジェクトの座標をwaitpointの座標に入れる
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i <obj.Length ; i++)
         {
             wp[i] = obj[i].transform.position;
-            transform.position = wp[i];
+            wp[i].y = 0;
+            transform.position = wp[i]; 
         }
 
         tracking_flag = false;
+        animator.SetBool("IS_CHECK", false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
       switch (state) {
 
         case State.Patrol: //徘徊
-                     
+
+           animator.SetBool("IS_CHECK", false);
             Patrol();
                         
             break;
@@ -79,9 +91,8 @@ public class BaceEnemy : MonoBehaviour
             break;
 
           case State.Lost_Search: //プレイヤーを見失いその場で停止する
-
             LostSearch();
-
+            animator.SetBool("IS_CHECK", true);
             break;
 
        }
@@ -103,7 +114,7 @@ public class BaceEnemy : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(wp[wpState] - transform.position), 2f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(wp[wpState] - transform.position),2f);
             transform.position += transform.forward * speed;
         }
 
@@ -116,9 +127,6 @@ public class BaceEnemy : MonoBehaviour
 
     public bool IsDiscoveryTarget()
     {
-
-       
-
         Vector3 target_Vec=target.transform.position-transform.position;
         float angle = Vector3.Angle(transform.forward, target_Vec);
         Debug.DrawRay(transform.position, target_Vec, Color.black, 0, false);
@@ -133,7 +141,7 @@ public class BaceEnemy : MonoBehaviour
                 return true;
             }
         }
-
+        rigidbody.constraints = RigidbodyConstraints.FreezePosition;
         return false;
     }
 
@@ -141,12 +149,13 @@ public class BaceEnemy : MonoBehaviour
     {
         tracking_flag = false;
         agent.Resume();
-        transform.LookAt(target.transform.position);
+        Vector3 new_target = target.transform.position;
+        new_target.y = 0;
+        transform.LookAt(new_target);
 
         agent.SetDestination(target.transform.position);
         if (IsDiscoveryTarget() != true)
         {
-           
             state = State.Lost_Search;
 
         }
@@ -155,12 +164,8 @@ public class BaceEnemy : MonoBehaviour
 
     public void LostSearch()
     {
-      
+       
         time = time + Time.deltaTime;
-
-        rot_z += Time.deltaTime * 45;
-
-        transform.rotation = Quaternion.Euler(0, rot_z, 0);
 
         if (time>=WaitTime)
         {
