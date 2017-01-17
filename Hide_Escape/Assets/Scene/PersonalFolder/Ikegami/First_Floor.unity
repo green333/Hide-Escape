@@ -10449,6 +10449,7 @@ GameObject:
   - 65: {fileID: 1634330366}
   - 114: {fileID: 1634330365}
   - 114: {fileID: 1634330364}
+  - 114: {fileID: 1634330369}
   - 114: {fileID: 1634330363}
   - 114: {fileID: 1634330362}
   - 114: {fileID: 1634330367}
@@ -10570,7 +10571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439bc0050849be14792fa56f039587b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: 
   Window_Senter: {x: 0, y: 0}
+  TimeEraseMode: 0
 --- !u!54 &1634330368
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10587,6 +10590,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 2
+--- !u!114 &1634330369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1634330360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41c4f8a955afb44892f650ffd70ce8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: {fileID: 0}
+  keyInfo: 0
 --- !u!1 &1639970062
 GameObject:
   m_ObjectHideFlags: 0
