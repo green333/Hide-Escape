@@ -32,8 +32,6 @@ public class MoveSceneFloor : Scene {
         type = TriggerType.NON;
     }
 
-    public bool flg;
-
     // Update is called once per frame
     void Update()
     {
@@ -76,7 +74,7 @@ public class MoveSceneFloor : Scene {
 
         if (GetComponent<P_Player>().IS_NEXTSTAGE)
         {
-            flg = true;
+
             fade.SetFade(Screenfade.FadeType.Type.OUT, fadeSpeed);
             type = TriggerType.NEXT_TRIGGER;
             GetComponent<DoorManager>().SaveActiveKeyData();
@@ -90,7 +88,7 @@ public class MoveSceneFloor : Scene {
         }
         else if(GetComponent<P_Player>().IS_GAMEOVER)
         {
-            fade.SetFade(Screenfade.FadeType.Type.OUT, fadeSpeed, 0.5f, 0.0f, 0.0f);
+            fade.SetFade(Screenfade.FadeType.Type.OUT, fadeSpeed);
             type = TriggerType.GAMEOVER_TRIGGER;
             GetComponent<P_Player>().IS_GAMEOVER = false;
         }

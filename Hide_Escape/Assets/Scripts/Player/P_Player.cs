@@ -760,6 +760,19 @@ public class P_Player : MonoBehaviour
             return;
         }
 
+
+
+        //かぎに接触
+        if (col.gameObject.tag == "KEY")
+        {
+
+            pop = GetComponent<PopUp>();
+            pop.SetText("    かぎに接触     ");//仮
+            pop.Activate(60);
+        }
+
+        
+
     }
     void OnCollisionStay(Collision col)
     {
