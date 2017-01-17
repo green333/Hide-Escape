@@ -47,6 +47,16 @@ public class DoorManager : MonoBehaviour
     private List<ReadInfo> door = new List<ReadInfo>(CAPACITY);
     private List<ReadInfo> key = new List<ReadInfo>(CAPACITY);
 
+    public bool IsOpen
+    {
+        get { return _isOpen; }
+    }
+
+    public List<ReadInfo> Key
+    {
+        get { return key; }
+    }
+
     //----------------------------------------------------------------------------
     //  @brief  初期化
     //----------------------------------------------------------------------------
