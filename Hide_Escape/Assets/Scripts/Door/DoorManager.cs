@@ -62,6 +62,11 @@ public class DoorManager : MonoBehaviour
     //----------------------------------------------------------------------------
     private void Start()
     {
+
+    }
+
+    private void Awake()
+    {
         SetIsOpenDoor(false);
         ReadFile(ref DoorFile, ref door);
         ReadFile(ref KeyFile, ref key);
@@ -161,7 +166,7 @@ public class DoorManager : MonoBehaviour
             PlayerPrefs.DeleteKey("Return_First_Floor" + i);
         }
     }
-
+    public int a = 0;
     //----------------------------------------------------------------------------
     //  @brief  ドアを開ける
     //----------------------------------------------------------------------------
@@ -169,7 +174,14 @@ public class DoorManager : MonoBehaviour
     {
         for (int i = 0; i < key.Count; i++)
         {
-            if (key[i].obj.activeInHierarchy) { continue; }
+            //  ドアが近くになければ飛ばす
+            if (Vector3.Distance(door[i].obj.transform.position, transform.position) > 2.0f) { continue; }
+
+            if (key[i].obj.activeInHierarchy) 
+            {
+                DontOpenDoor();
+                continue; 
+            }
 
             if (_isOpen
                 || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Botton_B"))
@@ -177,7 +189,20 @@ public class DoorManager : MonoBehaviour
                 door[i].animator.Play("Open");
                 door[i].collider.isTrigger = true;
                 door[i].nav.enabled = false;
+                a = 2;
             }
+        }
+    }
+
+    //----------------------------------------------------------------------------
+    //  @brief  ドアが開かない
+    //----------------------------------------------------------------------------
+    private void DontOpenDoor()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Botton_B"))
+        {
+            AudioManager.Instance.PlaySE("Select");
+            a = 1;
         }
     }
 
