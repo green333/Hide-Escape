@@ -105,7 +105,7 @@ public class P_Player : MonoBehaviour
         transform.position.Set(transform.position.x, 1, transform.position.z);//後で直す
         param = new P_param();
         param.pos = transform.position;
-
+        AudioManager.Instance.PlaySE("heart_dqn");
     }
 
 
@@ -152,7 +152,7 @@ public class P_Player : MonoBehaviour
         transform.rotation.Set(transform.rotation.x, transform.rotation.y, 0.0f, transform.rotation.w);
         ObjectParamUpdate();
         Rotation_Limit();
-
+ 
     }
 
     public bool RUN = false;
@@ -767,11 +767,19 @@ public class P_Player : MonoBehaviour
         {
 
             pop = GetComponent<PopUp>();
-            pop.SetText("    かぎに接触     ");//仮
+            pop.SetText("    かぎを取得     ");//仮
             pop.Activate(60);
         }
 
+        //ドアに接触
+        if(col.gameObject.tag == "DOOR")
+        {
         
+        	pop= GetComponent<PopUp>();
+        	pop.SetText("   A:ドアを開ける    ");//仮
+            pop.Activate();
+        
+        }
 
     }
     void OnCollisionStay(Collision col)
