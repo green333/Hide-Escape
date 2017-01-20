@@ -105,7 +105,7 @@ public class P_Player : MonoBehaviour
         transform.position.Set(transform.position.x, 1, transform.position.z);//後で直す
         param = new P_param();
         param.pos = transform.position;
-        AudioManager.Instance.PlaySE("heart_dqn");
+
     }
 
 
@@ -152,7 +152,7 @@ public class P_Player : MonoBehaviour
         transform.rotation.Set(transform.rotation.x, transform.rotation.y, 0.0f, transform.rotation.w);
         ObjectParamUpdate();
         Rotation_Limit();
- 
+
     }
 
     public bool RUN = false;
@@ -411,7 +411,20 @@ public class P_Player : MonoBehaviour
         if (Input.GetButtonDown("Botton_Y"))
         {
             Debug.Log("yボタン押した");
-       
+            bool Rotation_Initializer;
+            int timer = -1;
+            for (Rotation_Initializer = false, timer = 60; !Rotation_Initializer || timer > 0; timer--)
+            {
+                float x, y, z;
+                x = transform.eulerAngles.x;
+                // y = transform.eulerAngles.y;
+                z = transform.eulerAngles.z;
+
+                transform.Rotate(-x, 0, -z);
+
+                if ((int)x == 0/*&&(int)y==0*/&& (int)z == 0)
+                    Rotation_Initializer = true;
+            }
        
             
             
@@ -727,6 +740,9 @@ public class P_Player : MonoBehaviour
 
     public bool Contact_Collision = false;
     PopUp pop= null;
+
+    public static bool Last_KEY = false;
+
     void OnCollisionEnter(Collision col)
     {
         Debug.Log(col.gameObject.name + "と接触");
@@ -765,31 +781,34 @@ public class P_Player : MonoBehaviour
         //かぎに接触
         if (col.gameObject.tag == "KEY")
         {
-
+            
             pop = GetComponent<PopUp>();
+
+            if (col.gameObject.name == "Last_key"){
+                pop.SetText("    玄関の鍵を手に入れた！！     ");//仮
+                Last_KEY = true;
+            
+            }else
             pop.SetText("    かぎを取得     ");//仮
+           
             pop.Activate(60);
         }
 
-        //ドアに接触
-        if(col.gameObject.tag == "DOOR")
-        {
-        
-        	pop= GetComponent<PopUp>();
-        	pop.SetText("   A:ドアを開ける    ");//仮
-            pop.Activate();
+        if(col.gameObject.tag=="FrontDoor"){
+
+            if (Last_KEY) {
+
+                Clear_prosess();
+            }
         
         }
+        
 
     }
     void OnCollisionStay(Collision col)
     {
 
         Debug.Log("接触中");
-
-      
-
-
 
         param.movement = Vector3.zero;
         Contact_Collision = false;
