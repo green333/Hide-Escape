@@ -135,8 +135,6 @@ public class P_Player : MonoBehaviour
         switch (state)
         {
             case STATE.NORMAL:
-
-
                 MoveControl();
                 Action_Cheak();
                 Action_Input_Gamepad();
@@ -200,7 +198,7 @@ public class P_Player : MonoBehaviour
         transform.position.Set(transform.position.x, 1.1f, transform.position.z);//後で直す
         param.ResetMovement();
 
-
+    
 
     }
 
@@ -330,10 +328,6 @@ public class P_Player : MonoBehaviour
 
     }
 
-
-
-
-
     //入力判定用のタイマー　
     /*
      * この値を元に　ボタン押された時と押され続けられてる判定を取ります
@@ -419,18 +413,21 @@ public class P_Player : MonoBehaviour
             Debug.Log("yボタン押した");
             bool Rotation_Initializer;
             int timer = -1;
-            for (Rotation_Initializer = false, timer = 60; !Rotation_Initializer ||timer>0; timer--)
+            for (Rotation_Initializer = false, timer = 60; !Rotation_Initializer || timer > 0; timer--)
             {
                 float x, y, z;
                 x = transform.eulerAngles.x;
-               // y = transform.eulerAngles.y;
+                // y = transform.eulerAngles.y;
                 z = transform.eulerAngles.z;
 
-                transform.Rotate(-x,0,-z);
+                transform.Rotate(-x, 0, -z);
 
-                if((int)x==0/*&&(int)y==0*/&&(int)z==0)
-                            Rotation_Initializer = true;
+                if ((int)x == 0/*&&(int)y==0*/&& (int)z == 0)
+                    Rotation_Initializer = true;
             }
+       
+            
+            
             return;
         }
 
@@ -445,13 +442,6 @@ public class P_Player : MonoBehaviour
 
             return;
         }
-
-
-        //if (Input.GetButtonDown("Right Botton"))
-        //{
-
-
-        //}
 
     }
 
@@ -544,7 +534,7 @@ public class P_Player : MonoBehaviour
 
     private Hide_Data hide = null;
 
-    public int HideTimer = -1;
+
     private const float LENGTHDECIDE = 1.13f;//隠れる動作中の移動の際、この値以下になった場合に次のケースに移行
     private bool Hide_Action()
     {
@@ -573,8 +563,6 @@ public class P_Player : MonoBehaviour
                     {
                         if (hit.collider.tag == "Hide_Object")
                         {
-                            HideTimer = 120;
-
 
                             hide = hit.collider.GetComponent<Hide_Data>();
 
@@ -586,7 +574,7 @@ public class P_Player : MonoBehaviour
                                 step = STEP.HIDE_FINISH;
                                 break;
                             }
-                            //   Debug.Log("hide_movement" + hide_movement);
+                            Debug.Log("hide_movement" + hide_movement);
                             step = STEP.HIDE_START;
                         }
                     }
@@ -610,21 +598,20 @@ public class P_Player : MonoBehaviour
                 {
                     float length;
                     length = (targetpos - param.pos).magnitude;
-                    //   Debug.Log("length:" + length);
-                    if (length < LENGTHDECIDE || HideTimer < 0)
+                    Debug.Log("length:" + length);
+                    if (length < LENGTHDECIDE)
                     {
                         hide.Open_or_Close();
-                        // param.SetPos(targetpos);
+                       // param.SetPos(targetpos);
                         step = STEP.HIDE_NOW;
                         transform.position.Set(targetpos.x, 1.1f, targetpos.z);//後で直す
-
-
+       
+                        
                     }
                     else
                     {
-                        HideTimer--;
 
-                        param.movement = hide_movement * 5;
+                        param.movement = hide_movement * 3;
                     }
 
                 }
@@ -643,7 +630,6 @@ public class P_Player : MonoBehaviour
             case STEP.HIDE_2:
                 hide.Open_or_Close();
                 step = STEP.HIDE_3;
-                HideTimer = 120;
 
                 break;
 
@@ -652,12 +638,12 @@ public class P_Player : MonoBehaviour
                 {
                     float length;
                     length = (originalpos - param.pos).magnitude;
-                    if (length < LENGTHDECIDE || HideTimer < 0)
-                    //  if (length < 0.3f)
+                    //  if (length < LENGTHDECIDE)
+                    if (length < 0.3f)
                     {
 
                         hide.Open_or_Close();
-                        param.SetPos(originalpos + (originalpos - param.pos));
+                        param.SetPos(originalpos);
                         step = STEP.HIDE_FINISH;
                         transform.GetComponent<BoxCollider>().enabled = true;
 
@@ -665,7 +651,6 @@ public class P_Player : MonoBehaviour
                     else
                     {
                         param.movement = -hide_movement * 3;
-                        HideTimer--;
                     }
 
                 }
@@ -676,7 +661,6 @@ public class P_Player : MonoBehaviour
                 originalpos = Vector3.zero;
                 targetpos = Vector3.zero;
                 hide_movement = Vector3.zero;
-                HideTimer = -1;
 
                 hide = null;
                 state = STATE.NORMAL;
@@ -755,7 +739,10 @@ public class P_Player : MonoBehaviour
      */
 
     public bool Contact_Collision = false;
-    PopUp pop = null;
+    PopUp pop= null;
+
+    public static bool Last_KEY = false;
+
     void OnCollisionEnter(Collision col)
     {
         Debug.Log(col.gameObject.name + "と接触");
@@ -794,13 +781,28 @@ public class P_Player : MonoBehaviour
         //かぎに接触
         if (col.gameObject.tag == "KEY")
         {
-
+            
             pop = GetComponent<PopUp>();
-            pop.SetText("    かぎに接触     ");//仮
+
+            if (col.gameObject.name == "Last_key"){
+                pop.SetText("    玄関の鍵を手に入れた！！     ");//仮
+                Last_KEY = true;
+            
+            }else
+            pop.SetText("    かぎを取得     ");//仮
+           
             pop.Activate(60);
         }
 
+        if(col.gameObject.tag=="FrontDoor"){
 
+            if (Last_KEY) {
+
+                Clear_prosess();
+            }
+        
+        }
+        
 
     }
     void OnCollisionStay(Collision col)
@@ -808,14 +810,10 @@ public class P_Player : MonoBehaviour
 
         Debug.Log("接触中");
 
-
-
-
-
         param.movement = Vector3.zero;
         Contact_Collision = false;
 
-
+      
     }
     void OnCollisionExit(Collision col)
     {
