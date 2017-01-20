@@ -411,7 +411,20 @@ public class P_Player : MonoBehaviour
         if (Input.GetButtonDown("Botton_Y"))
         {
             Debug.Log("yボタン押した");
-       
+            bool Rotation_Initializer;
+            int timer = -1;
+            for (Rotation_Initializer = false, timer = 60; !Rotation_Initializer || timer > 0; timer--)
+            {
+                float x, y, z;
+                x = transform.eulerAngles.x;
+                // y = transform.eulerAngles.y;
+                z = transform.eulerAngles.z;
+
+                transform.Rotate(-x, 0, -z);
+
+                if ((int)x == 0/*&&(int)y==0*/&& (int)z == 0)
+                    Rotation_Initializer = true;
+            }
        
             
             
@@ -771,7 +784,7 @@ public class P_Player : MonoBehaviour
             
             pop = GetComponent<PopUp>();
 
-            if (col.gameObject.name == "Last_key")
+            if (col.gameObject.name == "Last_key"){
                 pop.SetText("    玄関の鍵を手に入れた！！     ");//仮
                 Last_KEY = true;
             
