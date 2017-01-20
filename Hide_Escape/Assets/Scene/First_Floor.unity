@@ -10777,7 +10777,6 @@ MonoBehaviour:
   RUN: 0
   Input_Timer: -1
   step: 0
-  HideTimer: -1
   Contact_Collision: 0
   HIDEABLE: 0
   IS_GAMEOVER: 0
