@@ -10387,13 +10387,14 @@ MonoBehaviour:
   SPEED: .0199999996
   RUNSPEED: .0700000003
   TURNING: 5
-  Inputmode: 0
+  Inputmode: 1
   RightStick_Vertical: 0
   RightStick_Horizontal: 1
   state: 0
   RUN: 0
   Input_Timer: -1
   step: 0
+  HideTimer: -1
   Contact_Collision: 0
   HIDEABLE: 0
   IS_GAMEOVER: 0
@@ -10436,8 +10437,8 @@ Rigidbody:
   m_GameObject: {fileID: 1634330360}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: .0500000007
+  m_Drag: 10
+  m_AngularDrag: 900
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
