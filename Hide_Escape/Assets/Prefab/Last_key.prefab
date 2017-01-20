@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2318154}
   - 65: {fileID: 6542412}
   m_Layer: 0
-  m_Name: key
+  m_Name: Last_key
   m_TagString: KEY
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
