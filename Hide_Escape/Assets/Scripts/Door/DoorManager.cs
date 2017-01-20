@@ -47,9 +47,9 @@ public class DoorManager : MonoBehaviour
     private List<ReadInfo> door = new List<ReadInfo>(CAPACITY);
     private List<ReadInfo> key = new List<ReadInfo>(CAPACITY);
 
-    public bool IsOpen
+    public List<ReadInfo> Door
     {
-        get { return _isOpen; }
+        get { return door; }
     }
 
     public List<ReadInfo> Key
@@ -166,7 +166,7 @@ public class DoorManager : MonoBehaviour
             PlayerPrefs.DeleteKey("Return_First_Floor" + i);
         }
     }
-    public int a = 0;
+
     //----------------------------------------------------------------------------
     //  @brief  ドアを開ける
     //----------------------------------------------------------------------------
@@ -189,7 +189,7 @@ public class DoorManager : MonoBehaviour
                 door[i].animator.Play("Open");
                 door[i].collider.isTrigger = true;
                 door[i].nav.enabled = false;
-                a = 2;
+
             }
         }
     }
@@ -202,7 +202,7 @@ public class DoorManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Botton_B"))
         {
             AudioManager.Instance.PlaySE("Select");
-            a = 1;
+
         }
     }
 
