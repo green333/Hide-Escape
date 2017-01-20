@@ -10755,7 +10755,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorFile: {fileID: 4900000, guid: 0f686a3ecfdf4f2468b91b7a2cf256d5, type: 3}
   KeyFile: {fileID: 4900000, guid: e165d4a73366c5247bfd8f7fd888f11b, type: 3}
-  a: 0
 --- !u!114 &1634330365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10771,7 +10770,7 @@ MonoBehaviour:
   SPEED: .0199999996
   RUNSPEED: .0700000003
   TURNING: 5
-  Inputmode: 1
+  Inputmode: 0
   RightStick_Vertical: 0
   RightStick_Horizontal: 1
   state: 0

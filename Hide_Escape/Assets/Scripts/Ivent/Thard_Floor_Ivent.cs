@@ -9,6 +9,7 @@ public class Thard_Floor_Ivent : MonoBehaviour {
 
     public int counter;                 //  カウンター
 
+    public GameObject prevTrigger;      //  前に戻るトリガー
 
     private enum Flg
     {
@@ -30,12 +31,16 @@ public class Thard_Floor_Ivent : MonoBehaviour {
         {
             transform.position += transform.forward.normalized * attackPower;
         }
+        else if(counter <= 0)
+        {
+            prevTrigger.gameObject.SetActive(false);
+        }
 	}
 
     
     void OnTriggerEnter(Collider collider)
     {
-        //  プレイヤーに当たったら吸い込み開始
+        //  プレイヤーが定位置に行くとイベントスタート
         if (collider.gameObject.tag == "Player")
         {
             iventFlg = (char)Flg.START;
