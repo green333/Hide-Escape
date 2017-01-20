@@ -727,6 +727,9 @@ public class P_Player : MonoBehaviour
 
     public bool Contact_Collision = false;
     PopUp pop= null;
+
+    public static bool Last_KEY = false;
+
     void OnCollisionEnter(Collision col)
     {
         Debug.Log(col.gameObject.name + "と接触");
@@ -765,15 +768,25 @@ public class P_Player : MonoBehaviour
         //かぎに接触
         if (col.gameObject.tag == "KEY")
         {
-
+            
             pop = GetComponent<PopUp>();
-            pop.SetText("    かぎに接触     ");//仮
+
+            if (col.gameObject.name == "Last_key")
+                pop.SetText("    玄関の鍵を手に入れた！！     ");//仮
+                Last_KEY = true;
+            
+            }else
+            pop.SetText("    かぎを取得     ");//仮
+           
             pop.Activate(60);
         }
 
-        if(col.gameObject.tag=="DOOR"){
-        
-        
+        if(col.gameObject.tag=="FrontDoor"){
+
+            if (Last_KEY) {
+
+                Clear_prosess();
+            }
         
         }
         
