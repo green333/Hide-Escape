@@ -437,9 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41c4f8a955afb44892f650ffd70ce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: {fileID: 164014, guid: fa10fc7347595bf418b92da122476bbf, type: 2}
+  key: {fileID: 11477208, guid: fa10fc7347595bf418b92da122476bbf, type: 2}
   player: {fileID: 1634330360}
-  activeKeyFlg: 
   keyInfo: 0
 --- !u!1001 &100163624
 Prefab:
@@ -9605,7 +9604,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 8217716, guid: 59309eaf40ea1a643a0099fb84aa2b07, type: 2}
       propertyPath: m_Volume
-      value: .523000002
+      value: .0549999997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59309eaf40ea1a643a0099fb84aa2b07, type: 2}
