@@ -576,13 +576,14 @@ MonoBehaviour:
   SPEED: .0199999996
   RUNSPEED: .0700000003
   TURNING: 5
-  Inputmode: 1
+  Inputmode: 0
   RightStick_Vertical: 0
   RightStick_Horizontal: 1
   state: 0
   RUN: 0
   Input_Timer: -1
   step: 0
+  HideTimer: -1
   Contact_Collision: 0
   HIDEABLE: 0
   IS_GAMEOVER: 0
@@ -615,7 +616,6 @@ MonoBehaviour:
   previousSceneName: 
   fade: {fileID: 0}
   fadeSpeed: 0
-  flg: 0
 --- !u!114 &11475094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -629,6 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorFile: {fileID: 4900000, guid: 24d2ea8b1ede3764db610de604b68955, type: 3}
   KeyFile: {fileID: 4900000, guid: 5ed2a5eff11e11c4ba8896ebef4b003f, type: 3}
+  a: 0
 --- !u!114 &11479460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -640,7 +641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439bc0050849be14792fa56f039587b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: 
   Window_Senter: {x: 0, y: 0}
+  TimeEraseMode: 0
 --- !u!114 &11485436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -652,6 +655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c7814498ebf9440a75a87e4b02bcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flg: 0
+  a: 
 --- !u!124 &12412098
 Behaviour:
   m_ObjectHideFlags: 1
@@ -1792,6 +1797,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: previousSceneName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Inputmode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
