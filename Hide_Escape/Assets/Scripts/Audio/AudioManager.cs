@@ -153,6 +153,22 @@ public class AudioManager : Singleton<AudioManager>
     }
 
 
+    public void PlaySE(string name,bool loop)
+    {
+        if (!_seDic.ContainsKey(name))
+        {
+            Debug.Log(name + "という名前のSEはありません");
+            return;
+        }
+
+        if (!SESource.isPlaying && loop)
+        {
+            SESource.PlayOneShot(_seDic[name] as AudioClip, volume);
+        }
+    }
+
+
+
     public void PlayerBGM()
     {
         if (!_bgmDic.ContainsKey(bgm_name))
