@@ -10,11 +10,11 @@ public class KeyUIInfo
 
 public class KeyUI : MonoBehaviour {
 
-    public GameObject key;
+    public Image key;
 
     public GameObject player;
 
-    private GameObject[] keyUI;           // キーUIのオブジェクト
+    private Image[] keyUI;           // キーUIのオブジェクト
     private bool[] activeKeyFlg;     // キーがアクティブになっているかを調べるフラグ
 
     public int keyInfo;
@@ -23,16 +23,18 @@ public class KeyUI : MonoBehaviour {
         keyInfo = player.GetComponent<DoorManager>().Key.Count;
 
         //  UIを鍵の数だけ生成
-        keyUI = new GameObject[player.GetComponent<DoorManager>().Key.Count];
+        keyUI = new Image[player.GetComponent<DoorManager>().Key.Count];
         activeKeyFlg = new bool[player.GetComponent<DoorManager>().Key.Count];
 
         //  鍵の数だけUIの情報を設定
         for(int i = 0; i < player.GetComponent<DoorManager>().Key.Count; ++i)
         {
-            //  鍵情報を娘に設定する
+            
             //keyUI[i].transform.parent = transform;
-            keyUI[i] = (GameObject)Instantiate(key, new Vector3(100.0f + (i * 10.0f), 50.0f, 1.0f), new Quaternion(0.0f, 0.0f, 0.0f, 1.0f));
+            keyUI[i] = (Image)Instantiate(key, new Vector3(80.0f + (i * 30.0f), 380.0f, 1.0f), new Quaternion(0.0f, 0.0f, 0.0f, 1.0f));
+            //  keyUIを子に設定する
             keyUI[i].transform.parent = transform;
+           // keyUI[i].GetComponent<RectTransform>().sizeDelta.Scale(new Vector2(keyScale, keyScale));
             activeKeyFlg[i] = false;
         }
 
@@ -55,7 +57,7 @@ public class KeyUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        AudioManager.Instance.PlaySE("heart_dqn", true);
 
 	    for(int i = 0; i < player.GetComponent<DoorManager>().Key.Count; ++i)
         {
