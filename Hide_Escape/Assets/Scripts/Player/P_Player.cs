@@ -743,6 +743,8 @@ public class P_Player : MonoBehaviour
 
     public static bool Last_KEY = false;
 
+    public Door door = null; 
+
     void OnCollisionEnter(Collision col)
     {
         Debug.Log(col.gameObject.name + "と接触");
@@ -798,6 +800,10 @@ public class P_Player : MonoBehaviour
 
             if (Last_KEY) {
 
+              
+
+                door = col.collider.GetComponent<Door>();
+              door.Open_Door();
                 Clear_prosess();
             }
         
