@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using UnityEngine.UI;
+
 public class ClearState : MonoBehaviour {
 
 
@@ -9,12 +11,12 @@ public class ClearState : MonoBehaviour {
         WAKE_UP = 0,           //ホワイトアウトして目覚める
         EYES_LOOK_SIDEWAYS,    //目線が横を向く
         TARGET_LOOP_ZOOM_IN,   //ターゲットに寄る
-        FIN,                   //終了
+        CLEAR_TEXT_IND,                   //クリアテキスト表示
+        NEXT_TITLE,            //タイトルへ
     }
 
     [SerializeField]
     private Clear_State state;         //クリアステート
-
 
     private float angle;    //回転
 
@@ -22,13 +24,29 @@ public class ClearState : MonoBehaviour {
 
     private float moved;  //移動値
 
+
+    [SerializeField]
+    private GameObject clear_text_obj = null;   //クリアテキストのオブジェクト
+
+    [SerializeField]
+    private Image fade;     //フェード
+
+    [SerializeField]
+    private RGB_Color color;
+
+    void Awake()
+    {
+        fade.color = new Color(color.red, color.green, color.blue, color.alpha);
+    }
+
     //-------------------------------------------
 
     //  初期化
 
     //-------------------------------------------
     void Start () {
-	}
+
+    }
 
 
 
@@ -54,8 +72,12 @@ public class ClearState : MonoBehaviour {
                 Zoom_In();
                 break;
 
-            case Clear_State.FIN:
-                Fin();
+            case Clear_State.CLEAR_TEXT_IND:
+                Text_Ind();
+                break;
+
+            case Clear_State.NEXT_TITLE:
+                Next_Scene();
                 break;
         }
 
@@ -142,7 +164,7 @@ public class ClearState : MonoBehaviour {
 
         if(transform.position.z > -1.77929)
         {
-            SetState(Clear_State.FIN);
+            SetState(Clear_State.CLEAR_TEXT_IND);
         }
         else
         {
@@ -150,14 +172,39 @@ public class ClearState : MonoBehaviour {
         }
     }
 
+    float alpha = 1.0f;
+    private bool oneshot = false;
 
+    //-----------------------------------
 
-    void Fin()
+    //  クリア演出終了
+
+    //-----------------------------------
+    void Text_Ind()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        clear_text_obj.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, alpha);
+
+        if(alpha > 0)
         {
-            Debug.Log("fin");
+            alpha -= 0.05f;
+        }
+
+        Invoke("Fade",1);
+    }
+
+    void Fade()
+    {
+        color.alpha += 0.01f;
+        fade.color = new Color(color.red, color.green, color.blue, color.alpha);
+
+        if(color.alpha > 1)
+        {
+            SetState(Clear_State.NEXT_TITLE);
         }
     }
 
+    void Next_Scene()
+    {
+        Application.LoadLevel("Title");
+    }
 }
