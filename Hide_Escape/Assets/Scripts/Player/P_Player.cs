@@ -105,7 +105,13 @@ public class P_Player : MonoBehaviour
         transform.position.Set(transform.position.x, 1, transform.position.z);//後で直す
         param = new P_param();
         param.pos = transform.position;
-
+        
+     
+       int keynum = gameObject.GetComponent<DoorManager>().Key.Count;
+     KeyData = new bool[keynum];
+     for (int i = 0; i < keynum; i++) {
+         KeyData[i] = false;
+     }
     }
 
 
@@ -198,7 +204,7 @@ public class P_Player : MonoBehaviour
         transform.position.Set(transform.position.x, 1.1f, transform.position.z);//後で直す
         param.ResetMovement();
 
-    
+
 
     }
 
@@ -425,9 +431,9 @@ public class P_Player : MonoBehaviour
                 if ((int)x == 0/*&&(int)y==0*/&& (int)z == 0)
                     Rotation_Initializer = true;
             }
-       
-            
-            
+
+
+
             return;
         }
 
@@ -602,11 +608,11 @@ public class P_Player : MonoBehaviour
                     if (length < LENGTHDECIDE)
                     {
                         hide.Open_or_Close();
-                       // param.SetPos(targetpos);
+                        // param.SetPos(targetpos);
                         step = STEP.HIDE_NOW;
                         transform.position.Set(targetpos.x, 1.1f, targetpos.z);//後で直す
-       
-                        
+
+
                     }
                     else
                     {
@@ -739,14 +745,19 @@ public class P_Player : MonoBehaviour
      */
 
     public bool Contact_Collision = false;
-    PopUp pop= null;
+    PopUp pop = null;
 
     public static bool Last_KEY = false;
 
+    public Door door = null;
+
+
+
+    public string hoge;
+
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log(col.gameObject.name + "と接触");
-        Contact_Collision = true;
+       Contact_Collision = true;
         param.movement = Vector3.zero;
 
         //敵との接触判定　＝＝死亡判定
@@ -781,28 +792,51 @@ public class P_Player : MonoBehaviour
         //かぎに接触
         if (col.gameObject.tag == "KEY")
         {
-            
+           
+            this.CheakKey(col.gameObject.name.ToString());
+
             pop = GetComponent<PopUp>();
 
-            if (col.gameObject.name == "Last_key"){
+            if (col.gameObject.name == "Last_key")
+            {
                 pop.SetText("    玄関の鍵を手に入れた！！     ");//仮
                 Last_KEY = true;
-            
-            }else
-            pop.SetText("    かぎを取得     ");//仮
-           
+
+            }
+            else
+                pop.SetText("    かぎを取得     ");//仮
+
             pop.Activate(60);
         }
 
-        if(col.gameObject.tag=="FrontDoor"){
 
-            if (Last_KEY) {
+        if (col.gameObject.tag == "DOOR")
+        { 
+            
+            hoge = col.gameObject.name.ToString();
+            DoorPopup(col.gameObject.name.ToString());
 
+
+        }
+
+
+
+
+        if (col.gameObject.tag == "FrontDoor")
+        {
+
+            if (Last_KEY)
+            {
+
+
+
+                door = col.collider.GetComponent<Door>();
+                door.Open_Door();
                 Clear_prosess();
             }
-        
+
         }
-        
+
 
     }
     void OnCollisionStay(Collision col)
@@ -813,7 +847,7 @@ public class P_Player : MonoBehaviour
         param.movement = Vector3.zero;
         Contact_Collision = false;
 
-      
+
     }
     void OnCollisionExit(Collision col)
     {
@@ -821,6 +855,48 @@ public class P_Player : MonoBehaviour
         pop = GetComponent<PopUp>();
         pop.Deactivate();
     }
+
+    //鍵の取得状況
+    public bool[] KeyData;
+ //  public  int KeyData;
+
+    private void DoorPopup(string name)
+    {
+        //
+        for (int i = 0; i < KeyData.Length; i++)
+        {
+            if (KeyData[i] && (name == "door" + i))
+            {
+                pop = GetComponent<PopUp>();
+                pop.SetText("　B:扉を開ける　");
+                pop.Activate();
+            }
+
+
+
+        }
+    }
+
+    private void CheakKey(string name) {
+
+        for (int i = 0; i < KeyData.Length; i++)
+        {
+            if (name == "key" + i) {
+                KeyData[i] = true;
+            
+            }
+        
+        }
+    
+    }
+
+
+
+
+
+
+
+
     //**********************************************************************
     //                  ステート切り替え関連　主に　Action関数・Update関数　にて使用
     //**********************************************************************
@@ -913,6 +989,11 @@ public class P_Player : MonoBehaviour
         IS_PREVSTAGE = true;
         return;
     }
+
+
+
+
+
 
 
 }
