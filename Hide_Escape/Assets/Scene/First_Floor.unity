@@ -10785,7 +10785,7 @@ MonoBehaviour:
   SPEED: .0199999996
   RUNSPEED: .0700000003
   TURNING: 5
-  Inputmode: 0
+  Inputmode: 1
   RightStick_Vertical: 0
   RightStick_Horizontal: 1
   state: 0
@@ -10794,6 +10794,8 @@ MonoBehaviour:
   step: 0
   Contact_Collision: 0
   door: {fileID: 0}
+  hoge: 
+  KeyData: 
   HIDEABLE: 0
   IS_GAMEOVER: 0
   IS_GAMECLEAR: 0
