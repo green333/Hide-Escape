@@ -10,6 +10,7 @@ TagManager:
   - CLEAR
   - ChengeScene
   - Hide_Object
+  - FrontDoor
   layers:
   - Default
   - TransparentFX
