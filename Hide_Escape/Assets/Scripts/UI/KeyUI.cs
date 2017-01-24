@@ -34,13 +34,9 @@ public class KeyUI : MonoBehaviour {
             keyUI[i] = (Image)Instantiate(key);
             keyUI[i].rectTransform.sizeDelta = new Vector2(key.rectTransform.sizeDelta.x * (Screen.width / 800), key.rectTransform.sizeDelta.y * (Screen.height / 400));
             keyUI[i].rectTransform.position = new Vector3(Screen.width / 10 + ((i * 12) * keyUI[i].rectTransform.sizeDelta.x), Screen.height - (Screen.height / 10), 1.0f);
-            //keyUI[i].rectTransform.position = new Vector3(80, Screen.height - 40.0f, 1);
             //  keyUIを子に設定する
             keyUI[i].transform.parent = transform;
             activeKeyFlg[i] = false;
-
-
-            activeKeyFlg[i] = true;
             //  鍵のUIがアクティブ状態ならUIをアクティブにする
             keyUI[i].gameObject.SetActive(activeKeyFlg[i]);
         }
@@ -56,11 +52,11 @@ public class KeyUI : MonoBehaviour {
             //  ドアが開かれたら鍵のUIを非アクティブ状態にする
             if (player.GetComponent<DoorManager>().Door[i].collider.isTrigger)
             {
-                //activeKeyFlg[i] = false;
+                activeKeyFlg[i] = false;
             }
 
             //  鍵のUIがアクティブ状態ならUIをアクティブにする
-            //keyUI[i].gameObject.SetActive(activeKeyFlg[i]);
+            keyUI[i].gameObject.SetActive(activeKeyFlg[i]);
 
             //  鍵がアクティブ状態なら飛ばす
             if (player.GetComponent<DoorManager>().Key[i].obj.activeInHierarchy) { continue; }
@@ -69,7 +65,7 @@ public class KeyUI : MonoBehaviour {
             //  鍵のUIがアクティブ状態じゃないならば鍵を表示してフラグをtrueにする
             if (activeKeyFlg[i] == false)
             {
-                //activeKeyFlg[i] = true;
+                activeKeyFlg[i] = true;
             }
 
 
