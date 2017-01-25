@@ -342,7 +342,6 @@ public class C_Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space) && AudioManager.Instance.PlaySE_End())
         {
             AudioManager.Instance.PlaySE("Select");
-            GetComponent<Clear_Ivent>().
         }
     } 
 

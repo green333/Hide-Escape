@@ -1918,7 +1918,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9362514, y: 0, z: -1.13202131}
+  m_LocalPosition: {x: .591961205, y: 2.63754117e-07, z: -6.06964207}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 473224}
@@ -2917,11 +2917,7 @@ MonoBehaviour:
   wp:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
   obj:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   target: {fileID: 0}
@@ -2929,13 +2925,15 @@ MonoBehaviour:
   gameobject: {fileID: 120170}
   rotMax: 0
   wpState: 0
-  size: 4
+  size: 2
   speed: 0
   view_length: 2
   view_angle: 45
   WaitTime: 5
   rot_z: 10
   tracking_flag: 0
+  flag: 0
+  player: {fileID: 0}
   state: 0
 --- !u!136 &13669682
 CapsuleCollider:
@@ -2946,8 +2944,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 1
+  m_Radius: .100000001
+  m_Height: .5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13702378
