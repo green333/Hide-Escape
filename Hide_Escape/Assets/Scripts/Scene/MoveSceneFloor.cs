@@ -21,6 +21,13 @@ public class MoveSceneFloor : Scene {
 
     private TriggerType type;
 
+    static string sceneName;
+
+    public string SceneName
+    {
+        get { return sceneName; }
+    }
+
     public TriggerType Type
     {
         get { return type; }
@@ -58,6 +65,7 @@ public class MoveSceneFloor : Scene {
                 break;
 
             case TriggerType.GAMEOVER_TRIGGER:
+                sceneName = Application.loadedLevelName;
                 ChangeScene("GameOver");
                 break;
                 

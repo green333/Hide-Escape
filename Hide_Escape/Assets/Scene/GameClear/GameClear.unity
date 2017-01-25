@@ -859,7 +859,7 @@ GameObject:
   - 4: {fileID: 991536735}
   - 54: {fileID: 991536742}
   - 65: {fileID: 991536741}
-  - 114: {fileID: 991536740}
+  - 114: {fileID: 991536736}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -873,7 +873,7 @@ Transform:
   m_PrefabParentObject: {fileID: 412164, guid: 3ca6bb07a839ea34e9f2e2f833198e61, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 991536734}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.04999995, y: 1.07000005, z: -.330000013}
   m_LocalScale: {x: .5, y: .300000012, z: .5}
   m_Children:
@@ -881,34 +881,24 @@ Transform:
   - {fileID: 1980758693}
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &991536740
+--- !u!114 &991536736
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11401794, guid: 3ca6bb07a839ea34e9f2e2f833198e61,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 991536734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f6721daaa42c7f4aaebf3e885c5b3c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ec0f44bf72b71b418f883656959a97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SPEED: .0199999996
-  RUNSPEED: .0700000003
-  TURNING: 5
-  Inputmode: 0
   RightStick_Vertical: 0
   RightStick_Horizontal: 1
-  state: 0
   RUN: 0
-  Input_Timer: -1
-  step: 0
-  Contact_Collision: 0
-  HIDEABLE: 0
-  IS_GAMEOVER: 0
-  IS_GAMECLEAR: 0
-  IS_NEXTSTAGE: 0
-  IS_PREVSTAGE: 0
+  TURNING: 5
+  RUNSPEED: .0700000003
+  SPEED: .0199999996
+  input_mode: 1
 --- !u!65 &991536741
 BoxCollider:
   m_ObjectHideFlags: 0
