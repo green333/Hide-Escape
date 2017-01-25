@@ -46,7 +46,12 @@ public class BaceEnemy : MonoBehaviour
 
     public float rot_z;
 
-    public bool tracking_flag; 
+    public bool tracking_flag;
+
+    public bool flag;
+
+    [SerializeField]
+    public P_Player player;
    
     enum State //行動分岐
     {
@@ -71,6 +76,7 @@ public class BaceEnemy : MonoBehaviour
 
         tracking_flag = false;
         animator.SetBool("IS_CHECK", false);
+        flag = player.GetHIDE_NOW();
     }
 
     void FixedUpdate()
@@ -96,6 +102,10 @@ public class BaceEnemy : MonoBehaviour
             break;
 
        }
+        if(flag)
+        {
+            state = State.Patrol;
+        }
     }
 
 

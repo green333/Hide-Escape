@@ -248,6 +248,8 @@ MonoBehaviour:
   light: {fileID: 908815632}
   agent: {fileID: 27996818}
   animator: {fileID: 27996820}
+  flag: 0
+  player: {fileID: 189747203}
 --- !u!143 &27996817
 CharacterController:
   m_ObjectHideFlags: 0
@@ -855,6 +857,8 @@ MonoBehaviour:
   WaitTime: 5
   rot_z: 10
   tracking_flag: 0
+  flag: 0
+  player: {fileID: 189747203}
   state: 0
 --- !u!195 &51191761
 NavMeshAgent:
@@ -1783,6 +1787,12 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 180756, guid: 3ca6bb07a839ea34e9f2e2f833198e61, type: 2}
   m_PrefabInternal: {fileID: 764356630}
+--- !u!114 &189747203 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11401794, guid: 3ca6bb07a839ea34e9f2e2f833198e61,
+    type: 2}
+  m_PrefabInternal: {fileID: 764356630}
+  m_Script: {fileID: 11500000, guid: 6f6721daaa42c7f4aaebf3e885c5b3c8, type: 3}
 --- !u!1 &200773377
 GameObject:
   m_ObjectHideFlags: 0
@@ -12892,6 +12902,8 @@ MonoBehaviour:
   light: {fileID: 908815632}
   agent: {fileID: 1767400942}
   animator: {fileID: 1767400944}
+  flag: 0
+  player: {fileID: 189747203}
 --- !u!143 &1767400941
 CharacterController:
   m_ObjectHideFlags: 0

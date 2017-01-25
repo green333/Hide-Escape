@@ -8337,6 +8337,10 @@ Prefab:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 11461006, guid: a29fc4827a444ad4da7a57be840346e9, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1634330365}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a29fc4827a444ad4da7a57be840346e9, type: 2}
   m_IsPrefabParent: 0
@@ -10772,13 +10776,14 @@ MonoBehaviour:
   SPEED: .0199999996
   RUNSPEED: .0700000003
   TURNING: 5
-  Inputmode: 1
+  Inputmode: 0
   RightStick_Vertical: 0
   RightStick_Horizontal: 1
   state: 0
   RUN: 0
   Input_Timer: -1
   step: 0
+  HIDE_NOW: 0
   Contact_Collision: 0
   door: {fileID: 0}
   hoge: 

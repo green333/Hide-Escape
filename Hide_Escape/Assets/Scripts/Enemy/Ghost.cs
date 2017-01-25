@@ -9,15 +9,19 @@ public class Ghost : MonoBehaviour {
     public Transform target;
     public float Speed;
 
+    [SerializeField]
+    public P_Player player;
+
+    public bool flag;
 	// Use this for initialization
 	void Start () {
-	
+        flag = player.GetHIDE_NOW();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if(light.GetIsLighting())
+        if(light.GetIsLighting()&&flag)
         {
             Go_Away();
         }
