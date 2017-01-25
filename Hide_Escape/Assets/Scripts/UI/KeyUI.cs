@@ -2,12 +2,6 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class KeyUIInfo
-{
-    public Image keyUI;           // キーUIのオブジェクト
-    public bool activeKeyFlg = false;     // キーがアクティブになっているかを調べるフラグ
-}
-
 public class KeyUI : MonoBehaviour {
 
     public Image key;
@@ -16,6 +10,8 @@ public class KeyUI : MonoBehaviour {
 
     private Image[] keyUI;           // キーUIのオブジェクト
     private bool[] activeKeyFlg;     // キーがアクティブになっているかを調べるフラグ
+
+    private Image lastKeyUI;
 
     //private KeyUIInfo[] uiInfo;     //  キーUI
 
@@ -36,6 +32,9 @@ public class KeyUI : MonoBehaviour {
             keyUI[i].rectTransform.position = new Vector3(Screen.width / 10 + ((i * 12) * keyUI[i].rectTransform.sizeDelta.x), Screen.height - (Screen.height / 10), 1.0f);
             //  keyUIを子に設定する
             keyUI[i].transform.parent = transform;
+            lastKeyUI = (Image)Instantiate(key);
+            lastKeyUI.rectTransform.position = new Vector2(0, Screen.height - (Screen.height / 10));
+            lastKeyUI.gameObject.SetActive(false);
             activeKeyFlg[i] = false;
             //  鍵のUIがアクティブ状態ならUIをアクティブにする
             keyUI[i].gameObject.SetActive(activeKeyFlg[i]);
@@ -47,6 +46,8 @@ public class KeyUI : MonoBehaviour {
 	void Update () {
         AudioManager.Instance.PlaySE("heart_dqn", true);
 
+        //if (player.GetComponent<P_Player>().useGUILayout) { lastKeyUI.gameObject.SetActive(true); }
+        //  各部屋の鍵のUI
 	    for(int i = 0; i < player.GetComponent<DoorManager>().Key.Count; ++i)
         {
             //  ドアが開かれたら鍵のUIを非アクティブ状態にする
