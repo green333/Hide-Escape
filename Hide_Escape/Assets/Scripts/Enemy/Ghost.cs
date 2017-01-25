@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Ghost : MonoBehaviour {
+public class Ghost : MonoBehaviour
+{
 
     [SerializeField]
     LightSystem light;
@@ -9,15 +10,21 @@ public class Ghost : MonoBehaviour {
     public Transform target;
     public float Speed;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    [SerializeField]
+    public P_Player player;
 
-        if(light.GetIsLighting())
+    public bool flag;
+    // Use this for initialization
+    void Start()
+    {
+        flag = player.GetHIDE_NOW();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (light.GetIsLighting() && flag)
         {
             Go_Away();
         }
@@ -25,8 +32,8 @@ public class Ghost : MonoBehaviour {
         {
             Approach();
         }
-	
-	}
+
+    }
 
     public void Approach()
     {

@@ -150,20 +150,34 @@ public class Text_Production : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !enterflg && com == Command.END)
         {
-            Indication(Command.CONTINUE,true);
+            Indication(Command.CONTINUE, true);
             com = Command.CONTINUE;
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) && !enterflg && com == Command.CONTINUE)
         {
-            Indication(Command.END,true);
+            Indication(Command.END, true);
             com = Command.END;
         }
 
+        float X = Input.GetAxis("Left Joystick Horizontal");
+        Debug.Log(X);
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (X < -0.5f && !enterflg && com == Command.END)
         {
-           AudioManager.Instance.PlaySE("Decision");
+            Indication(Command.CONTINUE, true);
+            com = Command.CONTINUE;
+        }
+
+        if(X > 0.5f && !enterflg && com == Command.CONTINUE)
+        {
+            Indication(Command.END, true);
+            com = Command.END;
+        }
+
+            if (Input.GetButtonUp("Botton_A") || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            AudioManager.Instance.PlaySE("Decision");
             enterflg = true;
         }
 
@@ -177,7 +191,7 @@ public class Text_Production : MonoBehaviour {
             switch (com)
             {
                 case Command.CONTINUE:
-                    Application.LoadLevel("First_Floor");
+                    Application.LoadLevel(GetComponent<MoveSceneFloor>().SceneName);
                     break;
 
                 case Command.END:
