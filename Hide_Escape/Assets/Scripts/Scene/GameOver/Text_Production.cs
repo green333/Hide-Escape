@@ -192,7 +192,7 @@ public class Text_Production : MonoBehaviour {
             switch (com)
             {
                 case Command.CONTINUE:
-                    Application.LoadLevel("First_Floor");
+                    Application.LoadLevel(GetComponent<MoveSceneFloor>().SceneName);
                     break;
 
                 case Command.END:
