@@ -10772,13 +10772,14 @@ MonoBehaviour:
   SPEED: .0199999996
   RUNSPEED: .0700000003
   TURNING: 5
-  Inputmode: 1
+  Inputmode: 0
   RightStick_Vertical: 0
   RightStick_Horizontal: 1
   state: 0
   RUN: 0
   Input_Timer: -1
   step: 0
+  HIDE_NOW: 0
   Contact_Collision: 0
   door: {fileID: 0}
   hoge: 
