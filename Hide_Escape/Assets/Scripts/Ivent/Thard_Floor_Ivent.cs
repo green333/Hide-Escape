@@ -5,11 +5,15 @@ public class Thard_Floor_Ivent : MonoBehaviour {
 
     private char iventFlg;              //  イベントフラグ
 
+    private char countorFlg;            //  カウンターフラグ
+
     public float attackPower = 0.0f;    //  ものが倒れる勢い
 
     public int counter;                 //  カウンター
 
     public GameObject prevTrigger;      //  前に戻るトリガー
+
+    public GameObject lastKey;          //  出口の鍵
 
     private enum Flg
     {
@@ -20,12 +24,14 @@ public class Thard_Floor_Ivent : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         iventFlg = (char)0x00;
+        countorFlg = (char)0x00;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (lastKey.GetComponent<LastKey>().KeyGetFlg == false) { iventFlg = (char)Flg.START; }
 
-        if ((iventFlg & (char)Flg.COUNTOR_FLG) == (int)Flg.COUNTOR_FLG){ counter--; }
+        if ((countorFlg & (char)Flg.COUNTOR_FLG) == (int)Flg.COUNTOR_FLG){ counter--; }
         //  イベントフラグがtrueなら
 	    if((iventFlg & (char)Flg.START) == 1 && counter >= 0)
         {
@@ -51,7 +57,7 @@ public class Thard_Floor_Ivent : MonoBehaviour {
     {
         if (collision.gameObject.name == "Obestacle")
         {
-            iventFlg |= (char)Flg.COUNTOR_FLG;
+            countorFlg |= (char)Flg.COUNTOR_FLG;
         }
     }
 }

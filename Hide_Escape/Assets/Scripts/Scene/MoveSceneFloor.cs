@@ -35,7 +35,6 @@ public class MoveSceneFloor : Scene {
     // Update is called once per frame
     void Update()
     {
-
         //  フラグチェック
         FlgChack();
 
@@ -63,7 +62,7 @@ public class MoveSceneFloor : Scene {
                 break;
                 
             case TriggerType.GAMECLERE_TRIGGER:
-                ChangeScene("GameClearScene");
+                ChangeScene("GameClear");
                 break;
         }
     }
