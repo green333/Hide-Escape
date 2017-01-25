@@ -499,8 +499,6 @@ public class P_Player : MonoBehaviour
         GameObject Light = gameObject.transform.FindChild("Rantan").gameObject;
         LightSystem hoge = Light.GetComponent<LightSystem>();
         hoge.Lighting();
-
-
     }
 
     //**********************************************************************
