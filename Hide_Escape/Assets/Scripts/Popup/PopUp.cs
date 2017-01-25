@@ -20,18 +20,25 @@ public class PopUp : MonoBehaviour
 
     public bool TimeEraseMode = false;
 
+
+    GUIStyle customGuiStyle;
+
+
     void OnGUI()
     {
 
        // SetText("qawsedrftgyhuj");
        //GUI.backgroundColor = Color.clear;
-        GUI.Box(new Rect(Window_Senter.x/4, Window_Senter.y/2,text.Length*12, 25), " "+text);
+        GUI.Box(new Rect(Window_Senter.x-text.Length*2, Window_Senter.y,text.Length*12, 25), " "+text);
+       // GUI.Box(new Rect(Window_Senter.x , Window_Senter.y / 2, text.Length * 12, 25), " " + text,customGuiStyle);
+
+
     }
     void Update()
     {
         //ウィンドウサイズ更新
-        Window_Senter.x = Screen.width ;
-        Window_Senter.y = Screen.height ;
+        Window_Senter.x = Screen.width/2 ;
+        Window_Senter.y = Screen.height/2 ;
 
 
 
@@ -54,8 +61,18 @@ public class PopUp : MonoBehaviour
         
        // text.Remove(0);
         text = txt;
+
+      //  SetTextSize(1);
         return true;
     }
+
+    public void SetTextSize(int size) {
+        customGuiStyle.fontSize = size;
+        return;
+    }
+
+
+    
     public void Removetext() {
         text.Remove(0);
     }

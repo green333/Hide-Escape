@@ -90,12 +90,12 @@ public class P_Player : MonoBehaviour
         KEYBORD,
         GAMEPAD
     }
-    public INPUT_MODE Inputmode;
+    public static  INPUT_MODE Inputmode;
 
 
     //カメラ回転に際しこの値を元に回転方向を決めます
-    public bool RightStick_Vertical;
-    public bool RightStick_Horizontal;
+    public static bool RightStick_Vertical;
+    public static bool RightStick_Horizontal;
 
 
 
@@ -105,13 +105,14 @@ public class P_Player : MonoBehaviour
         transform.position.Set(transform.position.x, 1, transform.position.z);//後で直す
         param = new P_param();
         param.pos = transform.position;
-        
-     
-       int keynum = gameObject.GetComponent<DoorManager>().Key.Count;
-     KeyData = new bool[keynum];
-     for (int i = 0; i < keynum; i++) {
-         KeyData[i] = false;
-     }
+
+
+        int keynum = gameObject.GetComponent<DoorManager>().Key.Count;
+        KeyData = new bool[keynum];
+        for (int i = 0; i < keynum; i++)
+        {
+            KeyData[i] = false;
+        }
     }
 
 
@@ -138,6 +139,11 @@ public class P_Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        //※隠れる動作中も作動させるため例外的に設置
+        if (Input.GetButtonDown("Right Botton"))
+        {
+            Right_Button();
+        }
         switch (state)
         {
             case STATE.NORMAL:
@@ -153,6 +159,8 @@ public class P_Player : MonoBehaviour
 
 
         }
+
+
         param.Update(transform.position);
         RotationControl();
         transform.rotation.Set(transform.rotation.x, transform.rotation.y, 0.0f, transform.rotation.w);
@@ -376,10 +384,10 @@ public class P_Player : MonoBehaviour
             RUN = false;
         }
 
-        if (Input.GetButtonDown("Right Botton"))
-        {
-            Right_Button();
-        }
+        //if (Input.GetButtonDown("Right Botton"))
+        //{
+        //    Right_Button();
+        //}
 
 
 
@@ -499,8 +507,6 @@ public class P_Player : MonoBehaviour
         GameObject Light = gameObject.transform.FindChild("Rantan").gameObject;
         LightSystem hoge = Light.GetComponent<LightSystem>();
         hoge.Lighting();
-
-
     }
 
     //**********************************************************************
@@ -540,7 +546,7 @@ public class P_Player : MonoBehaviour
 
     private Hide_Data hide = null;
 
-    public bool HIDE_NOW=false; //隠れているかフラグ　※Enemyで主に使用
+    public bool HIDE_NOW = false; //隠れているかフラグ　※Enemyで主に使用
 
     private const float LENGTHDECIDE = 1.13f;//隠れる動作中の移動の際、この値以下になった場合に次のケースに移行
     private bool Hide_Action()
@@ -759,7 +765,7 @@ public class P_Player : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-       Contact_Collision = true;
+        Contact_Collision = true;
         param.movement = Vector3.zero;
 
         //敵との接触判定　＝＝死亡判定
@@ -794,7 +800,7 @@ public class P_Player : MonoBehaviour
         //かぎに接触
         if (col.gameObject.tag == "KEY")
         {
-           
+
             this.CheakKey(col.gameObject.name.ToString());
 
             pop = GetComponent<PopUp>();
@@ -813,8 +819,8 @@ public class P_Player : MonoBehaviour
 
 
         if (col.gameObject.tag == "DOOR")
-        { 
-            
+        {
+
             hoge = col.gameObject.name.ToString();
             DoorPopup(col.gameObject.name.ToString());
 
@@ -860,7 +866,7 @@ public class P_Player : MonoBehaviour
 
     //鍵の取得状況
     public bool[] KeyData;
- //  public  int KeyData;
+    //  public  int KeyData;
 
     private void DoorPopup(string name)
     {
@@ -879,17 +885,19 @@ public class P_Player : MonoBehaviour
         }
     }
 
-    private void CheakKey(string name) {
+    private void CheakKey(string name)
+    {
 
         for (int i = 0; i < KeyData.Length; i++)
         {
-            if (name == "key" + i) {
+            if (name == "key" + i)
+            {
                 KeyData[i] = true;
-            
+
             }
-        
+
         }
-    
+
     }
 
 
@@ -956,6 +964,7 @@ public class P_Player : MonoBehaviour
     private void Clear_prosess()
     {
         IS_GAMECLEAR = true;
+        LAST_KEY = false;
         return;
     }
 
@@ -998,11 +1007,13 @@ public class P_Player : MonoBehaviour
     //                     ゲッター
     //**********************************************************************
 
-    public bool GetLAST_KEY() {
+    public bool GetLAST_KEY()
+    {
         return LAST_KEY;
     }
 
-    public bool GetHIDE_NOW() {
+    public bool GetHIDE_NOW()
+    {
         return HIDE_NOW;
     }
 
