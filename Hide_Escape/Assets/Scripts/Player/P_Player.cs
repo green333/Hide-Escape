@@ -956,6 +956,7 @@ public class P_Player : MonoBehaviour
     private void Clear_prosess()
     {
         IS_GAMECLEAR = true;
+        LAST_KEY = false;
         return;
     }
 
