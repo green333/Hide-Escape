@@ -148,17 +148,17 @@ public class Text_Production : MonoBehaviour {
     {
 
 
-        //if (Input.GetKeyDown(KeyCode.LeftArrow) && !enterflg && com == Command.END)
-        //{
-        //    Indication(Command.CONTINUE,true);
-        //    com = Command.CONTINUE;
-        //}
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !enterflg && com == Command.END)
+        {
+            Indication(Command.CONTINUE, true);
+            com = Command.CONTINUE;
+        }
 
-        //if (Input.GetKeyDown(KeyCode.RightArrow) && !enterflg && com == Command.CONTINUE)
-        //{
-        //    Indication(Command.END,true);
-        //    com = Command.END;
-        //}
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !enterflg && com == Command.CONTINUE)
+        {
+            Indication(Command.END, true);
+            com = Command.END;
+        }
 
         float X = Input.GetAxis("Left Joystick Horizontal");
         Debug.Log(X);
@@ -175,8 +175,7 @@ public class Text_Production : MonoBehaviour {
             com = Command.END;
         }
 
-        //if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        if (Input.GetButtonUp("Botton_A"))
+            if (Input.GetButtonUp("Botton_A") || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             AudioManager.Instance.PlaySE("Decision");
             enterflg = true;
