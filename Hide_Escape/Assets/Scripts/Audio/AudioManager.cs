@@ -168,14 +168,30 @@ public class AudioManager : Singleton<AudioManager>
     }
 
 
+    public bool PlaySE_End()
+    {
+        if (!SESource.isPlaying)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public void PlayerBGM()
     {
+
+        if (string.IsNullOrEmpty(bgm_name))
+        {
+            return;
+        }
+
         if (!_bgmDic.ContainsKey(bgm_name))
         {
             Debug.Log(bgm_name + "という名前のBGMはありません");
             return;
         }
+
+
 
         BGMSource.PlayOneShot(_bgmDic[bgm_name] as AudioClip,volume);
     }
