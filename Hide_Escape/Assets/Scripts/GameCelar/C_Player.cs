@@ -12,6 +12,10 @@ public class C_Player : MonoBehaviour {
     public float RUNSPEED;//走ってるときの移動力
     public float SPEED; //移動力
 
+    private bool nock = false;    //ノックする
+
+
+
     public enum Input_mode
     {
         KEYBOARD = 0,  //キーボード
@@ -104,8 +108,10 @@ public class C_Player : MonoBehaviour {
 
     //---------------------------------------
     void Update () {
-	
-	}
+        
+    }
+
+
 
     void FixedUpdate()
     {
@@ -117,6 +123,7 @@ public class C_Player : MonoBehaviour {
     private void MoveControl()
     {
         Move_Input_Gamepad();
+        Move_Input_Keybord();
         return;
     }
 
@@ -157,13 +164,11 @@ public class C_Player : MonoBehaviour {
 
     }
 
-
     private void Move_Input_Gamepad()
     {
         Vector3 Z = transform.right * Input.GetAxis("Left Joystick Horizontal");
         Vector3 X = transform.forward * Input.GetAxis("Left Joystick Vertical");
         param.movement = Z + X;
-        Debug.Log(Z);
 
         return;
     }
@@ -285,4 +290,60 @@ public class C_Player : MonoBehaviour {
         }
 
     }
+
+    void OnTriggerStay(Collider col)
+    {
+        if(col.gameObject.tag == "DOOR_0")
+        {
+            Nock_Ivent();
+
+        }
+
+        if (col.gameObject.tag == "DOOR_1")
+        {
+            Nock_Ivent();
+        }
+
+        if (col.gameObject.tag == "DOOR_2")
+        {
+            Nock_Ivent();
+        }
+
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if(col.gameObject.tag == "DOOR_0")
+        {
+            nock = false;
+        }
+
+        if (col.gameObject.tag == "DOOR_1")
+        {
+            nock = false;
+        }
+
+        if (col.gameObject.tag == "DOOR_2")
+        {
+            nock = false;
+        }
+
+    }
+
+
+
+    //----------------------------------------
+
+    //  扉ノックするイベント
+
+    //----------------------------------------
+    void Nock_Ivent()
+    {
+        if (Input.GetKey(KeyCode.Space) && AudioManager.Instance.PlaySE_End())
+        {
+            AudioManager.Instance.PlaySE("Select");
+            GetComponent<Clear_Ivent>().
+        }
+    } 
+
 }
