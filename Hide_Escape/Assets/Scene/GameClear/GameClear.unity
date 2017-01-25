@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RightStick_Vertical: 0
-  RightStick_Horizontal: 1
+  RightStick_Horizontal: 0
   RUN: 0
   TURNING: 5
   RUNSPEED: .0700000003
