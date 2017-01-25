@@ -12,9 +12,13 @@ public class C_Player : MonoBehaviour {
     public float RUNSPEED;//走ってるときの移動力
     public float SPEED; //移動力
 
-    private bool nock = false;    //ノックする
+    public static bool nock = false;    //ノックする
 
 
+    public static bool GetNock()
+    {
+        return nock;
+    }
 
     public enum Input_mode
     {
@@ -295,18 +299,22 @@ public class C_Player : MonoBehaviour {
     {
         if(col.gameObject.tag == "DOOR_0")
         {
-            Nock_Ivent();
-
+            Nock_Ivent(0);
         }
 
         if (col.gameObject.tag == "DOOR_1")
         {
-            Nock_Ivent();
+            Nock_Ivent(0);
         }
 
         if (col.gameObject.tag == "DOOR_2")
         {
-            Nock_Ivent();
+            Nock_Ivent(0);
+        }
+
+        if(col.gameObject.tag == "DOOR_3")
+        {
+            Nock_Ivent(0);
         }
 
     }
@@ -328,6 +336,10 @@ public class C_Player : MonoBehaviour {
             nock = false;
         }
 
+        if (col.gameObject.tag == "DOOR_3")
+        {
+            nock = false;
+        }
     }
 
 
@@ -337,11 +349,13 @@ public class C_Player : MonoBehaviour {
     //  扉ノックするイベント
 
     //----------------------------------------
-    void Nock_Ivent()
+    void Nock_Ivent(int nock_num)
     {
         if (Input.GetKey(KeyCode.Space) && AudioManager.Instance.PlaySE_End())
         {
-            AudioManager.Instance.PlaySE("Select");
+            AudioManager.Instance.PlaySE("nock");
+            nock = true;
+
         }
     } 
 
