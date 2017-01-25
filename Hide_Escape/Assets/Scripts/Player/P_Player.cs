@@ -538,6 +538,7 @@ public class P_Player : MonoBehaviour
 
     private Hide_Data hide = null;
 
+    public bool HIDE_NOW=false; //隠れているかフラグ　※Enemyで主に使用
 
     private const float LENGTHDECIDE = 1.13f;//隠れる動作中の移動の際、この値以下になった場合に次のケースに移行
     private bool Hide_Action()
@@ -578,7 +579,7 @@ public class P_Player : MonoBehaviour
                                 step = STEP.HIDE_FINISH;
                                 break;
                             }
-                            Debug.Log("hide_movement" + hide_movement);
+                            HIDE_NOW = true;
                             step = STEP.HIDE_START;
                         }
                     }
@@ -662,6 +663,7 @@ public class P_Player : MonoBehaviour
                 break;
             //終了時処理
             case STEP.HIDE_FINISH:
+                HIDE_NOW = false;
                 originalpos = Vector3.zero;
                 targetpos = Vector3.zero;
                 hide_movement = Vector3.zero;
@@ -745,7 +747,7 @@ public class P_Player : MonoBehaviour
     public bool Contact_Collision = false;
     PopUp pop = null;
 
-    public static bool Last_KEY = false;
+    public static bool LAST_KEY = false;
 
     public Door door = null;
 
@@ -795,10 +797,10 @@ public class P_Player : MonoBehaviour
 
             pop = GetComponent<PopUp>();
 
-            if (col.gameObject.name == "Last_key")
+            if (col.gameObject.name == "Last_Key")
             {
                 pop.SetText("    玄関の鍵を手に入れた！！     ");//仮
-                Last_KEY = true;
+                LAST_KEY = true;
 
             }
             else
@@ -823,7 +825,7 @@ public class P_Player : MonoBehaviour
         if (col.gameObject.tag == "FrontDoor")
         {
 
-            if (Last_KEY)
+            if (LAST_KEY)
             {
 
 
@@ -990,7 +992,17 @@ public class P_Player : MonoBehaviour
 
 
 
+    //**********************************************************************
+    //                     ゲッター
+    //**********************************************************************
 
+    public bool GetLAST_KEY() {
+        return LAST_KEY;
+    }
+
+    public bool GetHIDE_NOW() {
+        return HIDE_NOW;
+    }
 
 
 
