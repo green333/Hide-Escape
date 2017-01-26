@@ -104,7 +104,7 @@ public class BaceEnemy : MonoBehaviour
        }
         if(flag)
         {
-            state = State.Patrol;
+            state = State.Lost_Search;
         }
     }
 
