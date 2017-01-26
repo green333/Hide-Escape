@@ -3,13 +3,21 @@ using System.Collections;
 
 public class Clear_Ivent : MonoBehaviour {
 
-    struct Door_Nock
+    //struct Door_Nock
+    //{ 
+    //    bool door_0;      //←
+    //    bool door_1;      //→
+    //    bool door_2;      //↑(正面)
+    //}
+
+
+    public struct Door_Nock
     {
-        int door_0;      //←
-        int door_1;      //→
-        int door_2;      //↑(正面)
+        int nock;     //ノック回数
+        bool door;    //
     }
 
+    static public Door_Nock[] door_nock;
 
     public enum Nock_Turn   //ノックの順番
     {
@@ -19,7 +27,8 @@ public class Clear_Ivent : MonoBehaviour {
         NOCK_FALSE,    //ノック失敗
     }
 
-    static public int nock_num;   //ノックの回数
+    static int nock_num;   //ノックの回数
+
 
     static int GetNock_Num()
     {
@@ -38,21 +47,28 @@ public class Clear_Ivent : MonoBehaviour {
 	
 	void Update () {
 
-        if(nock_num == (int)Nock_Turn.DOOR_0)
-        {
-            return;
-        }
+        Debug.Log(nock_num);
 
-        if(nock_num == (int)Nock_Turn.DOOR_1)
+        if (C_Player.GetNock())
         {
-            return;
-        }
+            //if (nock_num == (int)Nock_Turn.DOOR_0)
+            {
+                nock_num++;
+                return;
+            }
 
-        if(nock_num == (int)Nock_Turn.DOOR_2)
-        {
-            return;
-        }
+            //if (nock_num == (int)Nock_Turn.DOOR_1)
+            {
+                //nock_num++;
+                //return;
+            }
 
+            //if (nock_num == (int)Nock_Turn.DOOR_2)
+            {
+                //nock_num++;
+                //return;
+            }
+        }
 
 	}
 

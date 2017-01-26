@@ -38,6 +38,8 @@ public class Text_Production : MonoBehaviour {
         OPERABLE,                //操作可能になる
     }
 
+
+
     enum State_Step
     {
         MOVED = 0,     //移動のみ
@@ -79,7 +81,7 @@ public class Text_Production : MonoBehaviour {
     public const int MAX = 500;
 
 
-
+    private GameObject data;    //前回のデータ
 
 
     void Awake()
@@ -88,6 +90,9 @@ public class Text_Production : MonoBehaviour {
         {
             select_on[i].enabled = false;
         }
+
+        data = GameObject.Find("Now_Scene_Name");
+            
     }
 
     //-------------------------------------
@@ -111,6 +116,8 @@ public class Text_Production : MonoBehaviour {
 
     //-------------------------------------
     void Update() {
+
+        Debug.Log(data.GetComponent<Data_Retention>().SceneName);
 
         switch (pro)
         {
@@ -191,7 +198,7 @@ public class Text_Production : MonoBehaviour {
             switch (com)
             {
                 case Command.CONTINUE:
-                    Application.LoadLevel(GetComponent<MoveSceneFloor>().SceneName);
+                    Application.LoadLevel(data.GetComponent<Data_Retention>().SceneName);
                     break;
 
                 case Command.END:
