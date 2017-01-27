@@ -400,27 +400,27 @@ public class P_Player : MonoBehaviour
         if (Input.GetButton("Botton_A"))
         {
 
-            if (Input_Timer > CONTINUE_TO_BUTTON)
+        
+            return;
+        }
+        
+
+        if (Input.GetButton("Botton_B"))
+        {
+    if (Input_Timer > CONTINUE_TO_BUTTON)
             {
-                Button_A();
+                Button_B();
                 Debug.Log("押され続けてる");
             }
             Debug.Log("Aが押された");
-            Button_A_PUSH();
+            Button_B_PUSH();
             Input_Timer++;
             return;
-        }
-        else if (Input.GetButtonUp("Botton_A"))
+        }else if (Input.GetButtonUp("Botton_B"))
         {
             //仮　後で直す
             Input_Timer = -1;
             RUN = false;
-        }
-
-        if (Input.GetButton("Botton_B"))
-        {
-
-            return;
         }
         if (Input.GetButton("Botton_X"))
         {
@@ -511,7 +511,7 @@ public class P_Player : MonoBehaviour
      */
 
     //Aボタン を　押した瞬間の動作
-    private void Button_A_PUSH()
+    private void Button_B_PUSH()
     {
 
         if (HIDEABLE == true)
@@ -523,7 +523,7 @@ public class P_Player : MonoBehaviour
 
     }
     //ボタン押され続けられているとき処理
-    private void Button_A()
+    private void Button_B()
     {
 
         RUN = true;
@@ -665,7 +665,7 @@ public class P_Player : MonoBehaviour
             //隠れている
             case STEP.HIDE_NOW:
 
-                if (Input.GetButton("Botton_A"))
+                if (Input.GetButton("Botton_B"))
                 {
                     step = STEP.HIDE_2;
                 }
@@ -952,7 +952,7 @@ public class P_Player : MonoBehaviour
         if (hide.Cheak(length)&&!GetHIDE_NOW())
         {
             pop = GetComponent<PopUp>();
-            pop.SetText(" A:隠れる");//仮
+            pop.SetText(" B:隠れる");//仮
             pop.Activate(120);
         }
 
