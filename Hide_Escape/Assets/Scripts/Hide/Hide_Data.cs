@@ -24,6 +24,8 @@ public class Hide_Data : MonoBehaviour
         //   gameObject.GetComponent<BoxCollider>().contactOffset=100f;
         float hoge = gameObject.GetComponent<BoxCollider>().contactOffset;
         Debug.Log("オフセット値" + hoge);
+
+        Hide_Point_Genalate();
     }
 
 
@@ -97,5 +99,16 @@ public class Hide_Data : MonoBehaviour
         
         return false;
     }
+
+    public Vector3 foo;
+    private void Hide_Point_Genalate() {
+
+        HidePoint = transform.position;
+
+         foo=transform.forward*0.3f;
+         HidePoint -= foo;
+    }
+
+
 
 }

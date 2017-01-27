@@ -90,18 +90,19 @@ public class P_Player : MonoBehaviour
         KEYBORD,
         GAMEPAD
     }
-    public static  INPUT_MODE Inputmode;
+    public static INPUT_MODE Inputmode=INPUT_MODE.GAMEPAD;
 
 
     //カメラ回転に際しこの値を元に回転方向を決めます
     public static bool RightStick_Vertical;
-    public static bool RightStick_Horizontal;
+    public static bool RightStick_Horizontal=true;
 
 
 
     // Use this for initialization
     void Start()
     {
+
         transform.position.Set(transform.position.x, 1, transform.position.z);//後で直す
         param = new P_param();
         param.pos = transform.position;
@@ -143,6 +144,10 @@ public class P_Player : MonoBehaviour
         if (Input.GetButtonDown("Right Botton"))
         {
             Right_Button();
+        }
+        if (Input.GetButtonDown("Back Botton"))
+        {
+            OperationMode_Change();
         }
         switch (state)
         {
@@ -473,6 +478,31 @@ public class P_Player : MonoBehaviour
         return;
     }
 
+
+
+    public void OperationMode_Change()
+    {
+        if (Inputmode == INPUT_MODE.GAMEPAD)
+            Inputmode = INPUT_MODE.KEYBORD;
+        else
+            Inputmode = INPUT_MODE.GAMEPAD;
+    }
+
+    public void RightStick_Horizontal_InputDirection_Change()
+    {
+        if (RightStick_Horizontal)
+            RightStick_Horizontal = false;
+        else
+            RightStick_Horizontal = true;
+    }
+    public void RightStick_Vertical_InputDirection_Change()
+    {
+        if (RightStick_Vertical)
+            RightStick_Vertical = false;
+        else
+            RightStick_Vertical = true;
+    }
+
     //**********************************************************************
     //                     各動作判別系
     //**********************************************************************
@@ -585,6 +615,8 @@ public class P_Player : MonoBehaviour
                             if (!hide.Cheak(hide_movement * 10))
                             {
                                 step = STEP.HIDE_FINISH;
+
+
                                 break;
                             }
                             HIDE_NOW = true;
@@ -771,9 +803,8 @@ public class P_Player : MonoBehaviour
         //敵との接触判定　＝＝死亡判定
         if (col.gameObject.tag == "Hide_Object")
         {
-            pop = GetComponent<PopUp>();
-            pop.SetText(" Aキー|| SPACE：隠れる ");//仮
-            pop.Activate();
+            Hide_PopUp(col);
+          
         }
         //敵との接触判定　＝＝死亡判定
         if (col.gameObject.tag == "Enemy")
@@ -878,11 +909,17 @@ public class P_Player : MonoBehaviour
                 pop = GetComponent<PopUp>();
                 pop.SetText("　B:扉を開ける　");
                 pop.Activate();
+                return;
             }
 
 
 
         }
+        pop = GetComponent<PopUp>();
+        pop.SetText(" 鍵がかかっているようだ・・・ ");//仮
+        pop.Activate(180);
+        return;
+
     }
 
     private void CheakKey(string name)
@@ -901,6 +938,21 @@ public class P_Player : MonoBehaviour
     }
 
 
+    private void Hide_PopUp(Collision col)
+    {
+
+        hide = col.collider.GetComponent<Hide_Data>();
+        Vector3 pos = hide.HidePoint;
+        Vector3 length = (pos - transform.position).normalized;
+        if (hide.Cheak(length))
+        {
+            pop = GetComponent<PopUp>();
+            pop.SetText(" A:隠れる");//仮
+            pop.Activate();
+        }
+
+        hide = null;
+    }
 
 
 
