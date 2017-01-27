@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InsectZombie : MonoBehaviour
-{
+public class InsectZombie : MonoBehaviour {
 
     [SerializeField]
     public Transform p_player;
@@ -22,18 +21,17 @@ public class InsectZombie : MonoBehaviour
 
     [SerializeField]
     public P_Player player;
-
-    // Use this for initialization
-    void Start()
-    {
+  
+	// Use this for initialization
+	void Start () {
         animator.SetBool("A_Flag", false);
         flag = player.GetHIDE_NOW();
-    }
-
-    // Update is called once per frame
+	}
+	
+	// Update is called once per frame
     void FixedUpdate()
     {
-        if (light.GetIsLighting() && flag != true)
+        if(light.GetIsLighting()&&flag!=true)
         {
             Approach();
         }
@@ -42,7 +40,7 @@ public class InsectZombie : MonoBehaviour
             animator.SetBool("A_Flag", false);
             agent.SetDestination(transform.position);
         }
-    }
+	}
 
     public void Approach()
     {

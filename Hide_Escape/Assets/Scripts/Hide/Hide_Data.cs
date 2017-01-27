@@ -84,17 +84,17 @@ public class Hide_Data : MonoBehaviour
     }
     public bool Cheak(Vector3 vec)
     {
-
+        
         Vector3 front = transform.forward;
         float front_length = front.magnitude;
         float Vec_length = vec.magnitude;
-
+        
         float cos = Mathf.Acos(Vector3.Dot(vec, front) / (front_length * Vec_length));
         cos = cos * 180.0f / Mathf.PI;
         Debug.Log("cos:" + cos);
         if (cos > 130)
             return true;
-
+        
         return false;
     }
 
