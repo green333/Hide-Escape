@@ -12,13 +12,16 @@ public class C_Player : MonoBehaviour {
     public float RUNSPEED;//走ってるときの移動力
     public float SPEED; //移動力
 
-    public static bool nock = false;    //ノックする
+    //public static bool nock = false;    //ノックする
 
-
-    public static bool GetNock()
+    struct Door_Knock
     {
-        return nock;
+        bool b_knock;      //ノックした
+        int knock_num;   //ノック回数
     }
+
+
+
 
     public enum Input_mode
     {
@@ -40,9 +43,6 @@ public class C_Player : MonoBehaviour {
         public Vector3 rotateVec;//回転量
 
 
-
-
-        // Use this for initialization
         void Start()
         {
             pos = Vector3.zero;
@@ -50,7 +50,6 @@ public class C_Player : MonoBehaviour {
             movement = Vector3.zero;
         }
 
-        // Update is called once per frame
         public void Update(Vector3 pos)
         {
             this.pos = pos;
@@ -86,7 +85,6 @@ public class C_Player : MonoBehaviour {
             pos = p;
         }
     }
-
     private P_param param;
 
 
@@ -101,9 +99,8 @@ public class C_Player : MonoBehaviour {
         transform.position.Set(transform.position.x, 1, transform.position.z);//後で直す
         param = new P_param();
         param.pos = transform.position;
-
+        
     }
-
 
 
     //---------------------------------------
@@ -112,9 +109,7 @@ public class C_Player : MonoBehaviour {
 
     //---------------------------------------
     void Update () {
-        
     }
-
 
 
     void FixedUpdate()
@@ -183,7 +178,6 @@ public class C_Player : MonoBehaviour {
 
     private void Rotation_Input_Keybord()
     {
-
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -323,22 +317,21 @@ public class C_Player : MonoBehaviour {
     {
         if(col.gameObject.tag == "DOOR_0")
         {
-            nock = false;
+            //nock = false;
         }
 
         if (col.gameObject.tag == "DOOR_1")
         {
-            nock = false;
+            //nock = false;
         }
 
         if (col.gameObject.tag == "DOOR_2")
         {
-            nock = false;
+            //nock = false;
         }
 
         if (col.gameObject.tag == "DOOR_3")
         {
-            nock = false;
         }
     }
 
@@ -354,7 +347,8 @@ public class C_Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space) && AudioManager.Instance.PlaySE_End())
         {
             AudioManager.Instance.PlaySE("nock");
-            nock = true;
+            //nock = true;
+            Debug.Log("コンコン");
 
         }
     } 
