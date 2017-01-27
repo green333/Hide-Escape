@@ -24,6 +24,8 @@ public class Hide_Data : MonoBehaviour
         //   gameObject.GetComponent<BoxCollider>().contactOffset=100f;
         float hoge = gameObject.GetComponent<BoxCollider>().contactOffset;
         Debug.Log("オフセット値" + hoge);
+
+        Hide_Point_Genalate();
     }
 
 
@@ -84,18 +86,29 @@ public class Hide_Data : MonoBehaviour
     }
     public bool Cheak(Vector3 vec)
     {
-
+        
         Vector3 front = transform.forward;
         float front_length = front.magnitude;
         float Vec_length = vec.magnitude;
-
+        
         float cos = Mathf.Acos(Vector3.Dot(vec, front) / (front_length * Vec_length));
         cos = cos * 180.0f / Mathf.PI;
         Debug.Log("cos:" + cos);
         if (cos > 130)
             return true;
-
+        
         return false;
     }
+
+    public Vector3 foo;
+    private void Hide_Point_Genalate() {
+
+        HidePoint = transform.position;
+
+         foo=transform.forward*0.3f;
+         HidePoint -= foo;
+    }
+
+
 
 }
