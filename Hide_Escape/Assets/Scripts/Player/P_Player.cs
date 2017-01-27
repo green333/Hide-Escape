@@ -872,7 +872,12 @@ public class P_Player : MonoBehaviour
                 door = col.collider.GetComponent<Door>();
                 door.Open_Door();
                 Clear_prosess();
+                return;
+
             }
+            hoge = col.gameObject.name.ToString();
+            DoorPopup(col.gameObject.name.ToString());
+
 
         }
 
@@ -908,7 +913,7 @@ public class P_Player : MonoBehaviour
             {
                 pop = GetComponent<PopUp>();
                 pop.SetText("　B:扉を開ける　");
-                pop.Activate();
+                pop.Activate(120);
                 return;
             }
 
@@ -944,11 +949,11 @@ public class P_Player : MonoBehaviour
         hide = col.collider.GetComponent<Hide_Data>();
         Vector3 pos = hide.HidePoint;
         Vector3 length = (pos - transform.position).normalized;
-        if (hide.Cheak(length))
+        if (hide.Cheak(length)&&!GetHIDE_NOW())
         {
             pop = GetComponent<PopUp>();
             pop.SetText(" A:隠れる");//仮
-            pop.Activate();
+            pop.Activate(120);
         }
 
         hide = null;

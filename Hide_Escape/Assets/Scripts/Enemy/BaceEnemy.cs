@@ -20,9 +20,7 @@ public class BaceEnemy : MonoBehaviour
     [SerializeField]
     private GameObject target=null; //プレイヤー
 
-    [SerializeField]
-    private Rigidbody rigidbody;
-
+ 
     [SerializeField]
     GameObject gameobject;
 
@@ -151,7 +149,7 @@ public class BaceEnemy : MonoBehaviour
                 return true;
             }
         }
-        rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+        
         return false;
     }
 
