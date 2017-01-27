@@ -183,13 +183,14 @@ public class DoorManager : MonoBehaviour
                 continue; 
             }
 
+            if (door[i].collider.isTrigger) { continue; }
             if (_isOpen
                 || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Botton_B"))
             {
                 door[i].animator.Play("Open");
                 door[i].collider.isTrigger = true;
                 door[i].nav.enabled = false;
-
+                AudioManager.Instance.PlaySE("door_open");
             }
         }
     }
@@ -201,7 +202,7 @@ public class DoorManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Botton_B"))
         {
-            AudioManager.Instance.PlaySE("Select");
+            AudioManager.Instance.PlaySE("nock");
 
         }
     }
@@ -216,6 +217,7 @@ public class DoorManager : MonoBehaviour
         {
             if (collision.gameObject.name == "key" + i)
             {
+                AudioManager.Instance.PlaySE("item_get");
                 key[i].obj.SetActive(false);
             }
         }
