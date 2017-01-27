@@ -105,7 +105,7 @@ public class Hide_Data : MonoBehaviour
 
         HidePoint = transform.position;
 
-         foo=transform.forward*0.3f;
+         foo=transform.forward*0.4f;
          HidePoint -= foo;
     }
 
