@@ -5404,6 +5404,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1634330365}
+    - target: {fileID: 120170, guid: a29fc4827a444ad4da7a57be840346e9, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a29fc4827a444ad4da7a57be840346e9, type: 2}
   m_IsPrefabParent: 0
