@@ -8,7 +8,8 @@ public class ClearState : MonoBehaviour {
 
     enum Clear_State
     {
-        WAKE_UP = 0,           //ホワイトアウトして目覚める
+        START_FADE = 0,
+        WAKE_UP,           //ホワイトアウトして目覚める
         EYES_LOOK_SIDEWAYS,    //目線が横を向く
         TARGET_LOOP_ZOOM_IN,   //ターゲットに寄る
         CLEAR_TEXT_IND,                   //クリアテキスト表示
@@ -60,6 +61,10 @@ public class ClearState : MonoBehaviour {
 
         switch(state)
         {
+            case Clear_State.START_FADE:
+                Invoke("Wake_Fade", 2);
+                break;
+
             case Clear_State.WAKE_UP:
                 WakeUp();
                 break;
@@ -84,6 +89,10 @@ public class ClearState : MonoBehaviour {
 
     }
 
+    void Wake_Fade()
+    {
+        state = Clear_State.WAKE_UP;
+    }
 
 
     //-------------------------------------------
