@@ -9,6 +9,7 @@ public class MoveSceneFloor : Scene {
     public Screenfade fade;             //  フェード
     public int fadeSpeed;               //  フェードの速さ
 
+
     public enum TriggerType
     {
         NON = 0,            //  なんのトリガーも引いてない
@@ -72,6 +73,7 @@ public class MoveSceneFloor : Scene {
     //  どのフラグが立っているかチェック
     void FlgChack()
     {
+        if (type != TriggerType.NON) { return; }
 
         if (GetComponent<P_Player>().IS_NEXTSTAGE)
         {
