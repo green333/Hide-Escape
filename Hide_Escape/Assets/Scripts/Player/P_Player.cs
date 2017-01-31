@@ -90,12 +90,12 @@ public class P_Player : MonoBehaviour
         KEYBORD,
         GAMEPAD
     }
-    public static INPUT_MODE Inputmode=INPUT_MODE.GAMEPAD;
+    public static INPUT_MODE Inputmode = INPUT_MODE.GAMEPAD;
 
 
     //カメラ回転に際しこの値を元に回転方向を決めます
     public static bool RightStick_Vertical;
-    public static bool RightStick_Horizontal=true;
+    public static bool RightStick_Horizontal = true;
 
 
 
@@ -400,14 +400,14 @@ public class P_Player : MonoBehaviour
         if (Input.GetButton("Botton_A"))
         {
 
-        
+
             return;
         }
-        
+
 
         if (Input.GetButton("Botton_B"))
         {
-    if (Input_Timer > CONTINUE_TO_BUTTON)
+            if (Input_Timer > CONTINUE_TO_BUTTON)
             {
                 Button_B();
                 Debug.Log("押され続けてる");
@@ -416,7 +416,8 @@ public class P_Player : MonoBehaviour
             Button_B_PUSH();
             Input_Timer++;
             return;
-        }else if (Input.GetButtonUp("Botton_B"))
+        }
+        else if (Input.GetButtonUp("Botton_B"))
         {
             //仮　後で直す
             Input_Timer = -1;
@@ -576,6 +577,8 @@ public class P_Player : MonoBehaviour
 
     private Hide_Data hide = null;
 
+    private int Hide_Timer = 0;
+
     public bool HIDE_NOW = false; //隠れているかフラグ　※Enemyで主に使用
 
     private const float LENGTHDECIDE = 1.13f;//隠れる動作中の移動の際、この値以下になった場合に次のケースに移行
@@ -621,6 +624,7 @@ public class P_Player : MonoBehaviour
                             }
                             HIDE_NOW = true;
                             step = STEP.HIDE_START;
+                            Hide_Timer = 180;
                         }
                     }
                     else
@@ -644,7 +648,7 @@ public class P_Player : MonoBehaviour
                     float length;
                     length = (targetpos - param.pos).magnitude;
                     Debug.Log("length:" + length);
-                    if (length < LENGTHDECIDE)
+                    if (length < LENGTHDECIDE||Hide_Timer<0)
                     {
                         hide.Open_or_Close();
                         // param.SetPos(targetpos);
@@ -655,7 +659,7 @@ public class P_Player : MonoBehaviour
                     }
                     else
                     {
-
+                        Hide_Timer--;
                         param.movement = hide_movement * 3;
                     }
 
@@ -668,6 +672,7 @@ public class P_Player : MonoBehaviour
                 if (Input.GetButton("Botton_B"))
                 {
                     step = STEP.HIDE_2;
+                    Hide_Timer = 180;
                 }
                 break;
 
@@ -684,7 +689,7 @@ public class P_Player : MonoBehaviour
                     float length;
                     length = (originalpos - param.pos).magnitude;
                     //  if (length < LENGTHDECIDE)
-                    if (length < 0.3f)
+                    if (length < 0.5f||Hide_Timer<0)
                     {
 
                         hide.Open_or_Close();
@@ -695,6 +700,7 @@ public class P_Player : MonoBehaviour
                     }
                     else
                     {
+                        Hide_Timer--;
                         param.movement = -hide_movement * 3;
                     }
 
@@ -804,7 +810,7 @@ public class P_Player : MonoBehaviour
         if (col.gameObject.tag == "Hide_Object")
         {
             Hide_PopUp(col);
-          
+
         }
         //敵との接触判定　＝＝死亡判定
         if (col.gameObject.tag == "Enemy")
@@ -949,7 +955,7 @@ public class P_Player : MonoBehaviour
         hide = col.collider.GetComponent<Hide_Data>();
         Vector3 pos = hide.HidePoint;
         Vector3 length = (pos - transform.position).normalized;
-        if (hide.Cheak(length)&&!GetHIDE_NOW())
+        if (hide.Cheak(length) && !GetHIDE_NOW())
         {
             pop = GetComponent<PopUp>();
             pop.SetText(" B:隠れる");//仮
