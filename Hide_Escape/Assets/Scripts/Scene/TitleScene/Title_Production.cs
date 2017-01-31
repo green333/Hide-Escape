@@ -14,13 +14,13 @@ public class Title_Production : Scene {
     private Image[] image;     //画像
     
     [SerializeField]
-    private RGB_Color color;    //カラー(Red,Green,Blue,Alpha)
+    private RGB_Color[] color = new RGB_Color[2];    //カラー(Red,Green,Blue,Alpha)
 
     [SerializeField]
     private string filename;   //切り替え先のシーン
 
     [SerializeField]
-    private float alpha_lower;  //不透明度を減らす
+    //private float alpha_lower;  //不透明度を減らす
 
     private enum Title
     {
@@ -31,6 +31,8 @@ public class Title_Production : Scene {
 
     private Title transition;   //ゲーム遷移
 
+    [SerializeField]
+    private Image game_start_fade;
 
     //---------------------------
 
@@ -38,6 +40,7 @@ public class Title_Production : Scene {
 
     //---------------------------
     public override void Start () {
+        game_start_fade.color = new Color(0, 0, 0, 0);
     }
 
 
@@ -56,6 +59,7 @@ public class Title_Production : Scene {
 
             case Title.PRESS_ENTER:
                 Title_Process();
+                    End_Fade();
                 break;
 
             case Title.GAME_SCREEN:
@@ -79,6 +83,20 @@ public class Title_Production : Scene {
         }
     }
 
+    void End_Fade()
+    {
+        game_start_fade.color = new Color(color[1].red, color[1].green, color[1].blue, color[1].alpha);
+
+        
+        if(color[1].alpha > 1)
+        {
+            transition = Title.GAME_SCREEN;
+        }
+        else
+        {
+            color[1].alpha += 0.01f;
+        }
+    }
 
     //---------------------------
 
@@ -90,16 +108,17 @@ public class Title_Production : Scene {
 
         for (int i = 0; i < image.Length; i++)
         {
-            image[i].color = new Color(color.red, color.green, color.blue, color.alpha);
+            image[i].color = new Color(color[0].red, color[0].green, color[0].blue, color[0].alpha);
         }
 
 
-        color.alpha -= 0.01f;
-
-
-        if (color.alpha < 0)
+        if (color[0].alpha < 0)
         {
-            transition = Title.GAME_SCREEN;
+            //transition = Title.GAME_SCREEN;
+        }
+        else
+        {
+            color[0].alpha -= 0.01f;
         }
 
     }
