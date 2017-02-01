@@ -11,7 +11,9 @@ public class IventPlayer : MonoBehaviour {
 
     private int targetPositionNo = 0;   //  ターゲットイベント番号
     private int size = 0;               //  配置位置の数
-    private int targetNo = 0;           //  ターゲット番号
+    public int targetNo = 0;           //  ターゲット番号
+
+    public bool walkFlg;               //  歩きフラグ
 
     //****************************************************************************************************************
     //
@@ -32,6 +34,11 @@ public class IventPlayer : MonoBehaviour {
     {
         get { return targetPositionNo; }
     }
+    //  歩きフラグ
+    public bool WalkFlg
+    {
+        get { return walkFlg; }
+    }
 
     //****************************************************************************************************************
     //
@@ -41,7 +48,7 @@ public class IventPlayer : MonoBehaviour {
 	void Start () 
     {
         size = obj.Length;
-
+        walkFlg = false;
         stopTimer = new int[size];
 
         //  イベントが起こる位置に配置した地点を配置
@@ -62,8 +69,10 @@ public class IventPlayer : MonoBehaviour {
     //****************************************************************************************************************
 	void Update () 
     {
+        walkFlg = IsPlayerStop();
+
         //  プレイヤーが止まる場所ならば止まる時間をカウントする
-        if (IsPlayerStop())
+        if (walkFlg)
         {
             TimerChack();
         }
@@ -80,7 +89,7 @@ public class IventPlayer : MonoBehaviour {
     //  プレイヤーが止まる場所化を調べる
     //
     //****************************************************************************************************************
-    bool IsPlayerStop()
+    public bool IsPlayerStop()
     {
         //  プレイヤーがターゲットの5m範囲内に入っていて次のターゲットに行くフラグが立っていたら
         if(Vector3.Distance(transform.position, iventPosition[targetNo]) < 2.0f)
