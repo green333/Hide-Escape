@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 98e4f839887d62646b98b0714d621803
+timeCreated: 1485928711
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: body
+    100002: bone
+    100004: bone13
+    100006: bone14
+    100008: bone15
+    100010: bone16
+    100012: bone17
+    100014: bone3
+    100016: bone4
+    100018: cylinder
+    100020: eff
+    100022: eff10
+    100024: eff11
+    100026: eff12
+    100028: eff13
+    100030: eff14
+    100032: eff3
+    100034: eff4
+    100036: //RootNode
+    100038: null
+    100040: polymsh_detached
+    100042: root
+    100044: root10
+    100046: root11
+    100048: root12
+    100050: root13
+    100052: root14
+    100054: root3
+    100056: root4
+    400000: body
+    400002: bone
+    400004: bone13
+    400006: bone14
+    400008: bone15
+    400010: bone16
+    400012: bone17
+    400014: bone3
+    400016: bone4
+    400018: cylinder
+    400020: eff
+    400022: eff10
+    400024: eff11
+    400026: eff12
+    400028: eff13
+    400030: eff14
+    400032: eff3
+    400034: eff4
+    400036: //RootNode
+    400038: null
+    400040: polymsh_detached
+    400042: root
+    400044: root10
+    400046: root11
+    400048: root12
+    400050: root13
+    400052: root14
+    400054: root3
+    400056: root4
+    4300000: cylinder
+    4300002: polymsh_detached
+    4300004: body
+    7400000: found
+    9500000: //RootNode
+    13700000: body
+    13700002: cylinder
+    13700004: polymsh_detached
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: found
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: body
+        weight: 1
+      - path: cylinder
+        weight: 1
+      - path: null
+        weight: 1
+      - path: null/root
+        weight: 1
+      - path: null/root/bone
+        weight: 1
+      - path: null/root/bone/eff
+        weight: 1
+      - path: null/root/root3
+        weight: 1
+      - path: null/root/root3/bone3
+        weight: 1
+      - path: null/root/root3/bone3/eff3
+        weight: 1
+      - path: null/root/root4
+        weight: 1
+      - path: null/root/root4/bone4
+        weight: 1
+      - path: null/root/root4/bone4/eff4
+        weight: 1
+      - path: null/root/root10
+        weight: 1
+      - path: null/root/root10/bone13
+        weight: 1
+      - path: null/root/root10/bone13/eff10
+        weight: 1
+      - path: null/root/root11
+        weight: 1
+      - path: null/root/root11/bone14
+        weight: 1
+      - path: null/root/root11/bone14/eff11
+        weight: 1
+      - path: null/root/root12
+        weight: 1
+      - path: null/root/root12/bone15
+        weight: 1
+      - path: null/root/root12/bone15/eff12
+        weight: 1
+      - path: null/root/root13
+        weight: 1
+      - path: null/root/root13/bone16
+        weight: 1
+      - path: null/root/root13/bone16/eff13
+        weight: 1
+      - path: null/root/root14
+        weight: 1
+      - path: null/root/root14/bone17
+        weight: 1
+      - path: null/root/root14/bone17/eff14
+        weight: 1
+      - path: polymsh_detached
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
