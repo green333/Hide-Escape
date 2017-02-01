@@ -85,13 +85,14 @@ public class DoorManager : MonoBehaviour
     //----------------------------------------------------------------------------
     private void Update()
     {
+
         //  デバッグ用にPキーでシーン移動させてます
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SaveActiveKeyData();
-            Application.LoadLevel("Second_Floor");
-            return;
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+            //SaveActiveKeyData();
+            //Application.LoadLevel("Second_Floor");
+            //return;
+        //}
 
         OpenDoor();
     }
@@ -222,6 +223,8 @@ public class DoorManager : MonoBehaviour
             }
         }
     }
+
+
 
     //----------------------------------------------------------------------------
     //  @brief      ファイル読み込み
