@@ -385,7 +385,7 @@ public class P_Player : MonoBehaviour
         //leftbottonとRightBottonは対応する処理ゆえに　return をつけていません
 
 
-        if (Input.GetButton("Left Botton"))
+        if (Input.GetButtonDown("Left Botton"))
         {
             RUN = true;
         }

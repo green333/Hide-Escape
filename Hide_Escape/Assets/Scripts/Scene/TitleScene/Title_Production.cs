@@ -77,7 +77,7 @@ public class Title_Production : Scene {
     //---------------------------
     void Press_Enter()
     {
-        if (Input.GetButtonDown("Botton_B"))
+        if (Input.GetButtonDown("Botton_B") || Input.GetKeyDown(KeyCode.Space))
         {
             transition = Title.PRESS_ENTER;
         }

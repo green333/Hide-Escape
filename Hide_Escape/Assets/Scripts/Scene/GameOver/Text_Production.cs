@@ -182,7 +182,7 @@ public class Text_Production : MonoBehaviour {
             com = Command.END;
         }
 
-            if (Input.GetButtonUp("Botton_B") || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetButtonUp("Botton_B") || Input.GetKeyDown(KeyCode.Space))
         {
             AudioManager.Instance.PlaySE("Decision");
             enterflg = true;
