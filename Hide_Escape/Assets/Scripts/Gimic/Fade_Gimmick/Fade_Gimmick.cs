@@ -62,6 +62,7 @@ public class Fade_Gimmick : MonoBehaviour {
         if (collider.gameObject.tag == "Player")
         {
             fadeFlg = true;
+            AudioManager.Instance.PlaySE("Surprised");
         }
     }
 }

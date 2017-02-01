@@ -89,7 +89,7 @@ public class BaceEnemy : MonoBehaviour
             break;
 
          case State.Tracking: //プレイヤーを見つけて追いかける
-
+            AudioManager.Instance.PlaySE("enemy_to_chase", true);
             Tracking();
 
             break;
