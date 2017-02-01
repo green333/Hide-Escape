@@ -140,38 +140,43 @@ public class P_Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        //※隠れる動作中も作動させるため例外的に設置
-        if (Input.GetButtonDown("Right Botton"))
+
+        if (IS_GAMEOVER)
         {
-            Right_Button();
+            return;
         }
-        if (Input.GetButtonDown("Back Botton"))
-        {
-            OperationMode_Change();
-        }
-        switch (state)
-        {
-            case STATE.NORMAL:
-                MoveControl();
-                Action_Cheak();
-                Action_Input_Gamepad();
+            //※隠れる動作中も作動させるため例外的に設置
+            if (Input.GetButtonDown("Right Botton"))
+            {
+                Right_Button();
+            }
+            if (Input.GetButtonDown("Back Botton"))
+            {
+                OperationMode_Change();
+            }
+            switch (state)
+            {
+                case STATE.NORMAL:
+                    MoveControl();
+                    Action_Cheak();
+                    Action_Input_Gamepad();
 
 
-                break;
-            case STATE.HIDE_MOATION:
-                Hide_Action();
-                break;
+                    break;
+                case STATE.HIDE_MOATION:
+                    Hide_Action();
+                    break;
 
 
-        }
+            }
 
 
-        param.Update(transform.position);
-        RotationControl();
-        transform.rotation.Set(transform.rotation.x, transform.rotation.y, 0.0f, transform.rotation.w);
-        ObjectParamUpdate();
-        Rotation_Limit();
-
+            param.Update(transform.position);
+            RotationControl();
+            transform.rotation.Set(transform.rotation.x, transform.rotation.y, 0.0f, transform.rotation.w);
+            ObjectParamUpdate();
+            Rotation_Limit();
+        
     }
 
     public bool RUN = false;
