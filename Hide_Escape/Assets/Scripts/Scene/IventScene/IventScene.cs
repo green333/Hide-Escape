@@ -18,7 +18,7 @@ public class IventScene : Scene
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space) || fade.IsEnd())
+        if (Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Start Botton") || fade.IsEnd())
         {
             ChangeScene(nextSceneName);
         }
