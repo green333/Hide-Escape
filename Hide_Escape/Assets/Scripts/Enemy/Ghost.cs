@@ -70,6 +70,7 @@ public class Ghost : MonoBehaviour {
                 animator.SetBool("W_Flag", false);
                 animator.SetBool("C_Flag", true);
                 Approach();
+                AudioManager.Instance.PlaySE("enemy_to_chase", true);
                 break;
         }
 
