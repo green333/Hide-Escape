@@ -77,7 +77,7 @@ public class Title_Production : Scene {
     //---------------------------
     void Press_Enter()
     {
-        if (Input.GetButtonDown("Botton_B") || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Botton_B") || Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Start Botton"))
         {
             transition = Title.PRESS_ENTER;
             AudioManager.Instance.PlaySE("Discovery02");
