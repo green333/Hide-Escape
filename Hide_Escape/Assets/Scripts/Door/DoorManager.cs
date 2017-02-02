@@ -62,7 +62,19 @@ public class DoorManager : MonoBehaviour
     //----------------------------------------------------------------------------
     private void Start()
     {
-
+        ResetKeyData();
+    }
+    
+    void ResetKeyData()
+    {
+        if(Application.loadedLevelName == "Title")
+        {
+            PlayerPrefs.SetInt("First_Floor", 0);
+            PlayerPrefs.SetInt("Second_Floor",0);
+            PlayerPrefs.SetInt("Third_Floor", 0);
+            PlayerPrefs.SetInt("Return_Second_Floor", 0);
+            PlayerPrefs.SetInt("Return_First_Floor", 0);
+        }
     }
 
     private void Awake()

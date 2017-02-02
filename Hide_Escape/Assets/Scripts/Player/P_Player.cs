@@ -334,7 +334,6 @@ public class P_Player : MonoBehaviour
         else
         {
             param.rotateVec.y -= Input.GetAxis("Right Joystick Horizontal") * TURNING;
-
         }
 
         if (RightStick_Vertical)
