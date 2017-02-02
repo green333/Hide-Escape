@@ -334,7 +334,6 @@ public class P_Player : MonoBehaviour
         else
         {
             param.rotateVec.y -= Input.GetAxis("Right Joystick Horizontal") * TURNING;
-
         }
 
         if (RightStick_Vertical)
@@ -410,14 +409,14 @@ public class P_Player : MonoBehaviour
         }
 
 
-        if (Input.GetButton("Botton_B"))
+        if (Input.GetButton("Botton_B") || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             if (Input_Timer > CONTINUE_TO_BUTTON)
             {
                 Button_B();
-                Debug.Log("押され続けてる");
+                //Debug.Log("押され続けてる");
             }
-            Debug.Log("Aが押された");
+            //Debug.Log("Aが押された");
             Button_B_PUSH();
             Input_Timer++;
             return;
@@ -435,7 +434,7 @@ public class P_Player : MonoBehaviour
         }
         if (Input.GetButtonDown("Botton_Y"))
         {
-            Debug.Log("yボタン押した");
+            //Debug.Log("yボタン押した");
             bool Rotation_Initializer;
             int timer = -1;
             for (Rotation_Initializer = false, timer = 60; !Rotation_Initializer || timer > 0; timer--)
@@ -459,7 +458,7 @@ public class P_Player : MonoBehaviour
 
         if (Input.GetAxis("Right Trigger") > 0)
         {
-            Debug.Log("トリガー押した");
+            //Debug.Log("トリガー押した");
             return;
         }
         if (Input.GetAxis("Left Trigger") > 0)
@@ -652,7 +651,7 @@ public class P_Player : MonoBehaviour
                 {
                     float length;
                     length = (targetpos - param.pos).magnitude;
-                    Debug.Log("length:" + length);
+                    //Debug.Log("length:" + length);
                     if (length < LENGTHDECIDE||Hide_Timer<0)
                     {
                         hide.Open_or_Close();
@@ -674,7 +673,7 @@ public class P_Player : MonoBehaviour
             //隠れている
             case STEP.HIDE_NOW:
 
-                if (Input.GetButton("Botton_B"))
+                if (Input.GetButton("Botton_B") || Input.GetKeyDown(KeyCode.KeypadEnter))
                 {
                     step = STEP.HIDE_2;
                     Hide_Timer = 180;
@@ -897,7 +896,7 @@ public class P_Player : MonoBehaviour
     void OnCollisionStay(Collision col)
     {
 
-        Debug.Log("接触中");
+        //Debug.Log("接触中");
 
         param.movement = Vector3.zero;
         Contact_Collision = false;

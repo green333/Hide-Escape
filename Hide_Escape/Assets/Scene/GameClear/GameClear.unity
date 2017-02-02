@@ -1163,8 +1163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec0f44bf72b71b418f883656959a97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightStick_Vertical: 0
-  RightStick_Horizontal: 0
+  RightStick_Vertical: 1
+  RightStick_Horizontal: 1
   light: {fileID: 1009133354}
   over_fade: {fileID: 1400962077}
   next_clear: {fileID: 484119809}
@@ -1173,7 +1173,7 @@ MonoBehaviour:
     green: 1
     blue: 1
     alpha: 0
-  input_mode: 0
+  input_mode: 1
 --- !u!65 &991536741
 BoxCollider:
   m_ObjectHideFlags: 0

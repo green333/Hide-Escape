@@ -23,7 +23,7 @@ public class Hide_Data : MonoBehaviour
         _animator.SetBool("IS_CLOSE", false);
         //   gameObject.GetComponent<BoxCollider>().contactOffset=100f;
         float hoge = gameObject.GetComponent<BoxCollider>().contactOffset;
-        Debug.Log("オフセット値" + hoge);
+        //Debug.Log("オフセット値" + hoge);
 
         Hide_Point_Genalate();
     }
@@ -93,7 +93,7 @@ public class Hide_Data : MonoBehaviour
         
         float cos = Mathf.Acos(Vector3.Dot(vec, front) / (front_length * Vec_length));
         cos = cos * 180.0f / Mathf.PI;
-        Debug.Log("cos:" + cos);
+        //Debug.Log("cos:" + cos);
         if (cos > 130)
             return true;
         
