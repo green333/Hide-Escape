@@ -80,6 +80,7 @@ public class Title_Production : Scene {
         if (Input.GetButtonDown("Botton_B") || Input.GetKeyDown(KeyCode.Space))
         {
             transition = Title.PRESS_ENTER;
+            AudioManager.Instance.PlaySE("Discovery02");
         }
     }
 

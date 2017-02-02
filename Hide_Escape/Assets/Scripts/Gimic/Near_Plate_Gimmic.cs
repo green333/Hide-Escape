@@ -16,11 +16,6 @@ public class Near_Plate_Gimmic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            shakePlateflg = true;
-        }
 
         //shakePlateflg = GetComponentInChildren<Plate_Gimmick>().GetComponentInChildren<Plate_Gimmick>().Shakeflg;
         
