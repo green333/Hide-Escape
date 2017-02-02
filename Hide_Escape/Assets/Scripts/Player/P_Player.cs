@@ -410,7 +410,7 @@ public class P_Player : MonoBehaviour
         }
 
 
-        if (Input.GetButton("Botton_B"))
+        if (Input.GetButton("Botton_B") || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             if (Input_Timer > CONTINUE_TO_BUTTON)
             {
@@ -674,7 +674,7 @@ public class P_Player : MonoBehaviour
             //隠れている
             case STEP.HIDE_NOW:
 
-                if (Input.GetButton("Botton_B"))
+                if (Input.GetButton("Botton_B") || Input.GetKeyDown(KeyCode.KeypadEnter))
                 {
                     step = STEP.HIDE_2;
                     Hide_Timer = 180;

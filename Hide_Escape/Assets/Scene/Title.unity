@@ -865,7 +865,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451758, guid: 59309eaf40ea1a643a0099fb84aa2b07, type: 2}
       propertyPath: bgm_name
-      value: MainGame
+      value: heart_dqn
       objectReference: {fileID: 0}
     - target: {fileID: 8217716, guid: 59309eaf40ea1a643a0099fb84aa2b07, type: 2}
       propertyPath: m_Volume
