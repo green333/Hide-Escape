@@ -845,6 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61e5501b2f68a745b763c7dfffc8c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   light: {fileID: 0}
   obj:
   - {fileID: 0}

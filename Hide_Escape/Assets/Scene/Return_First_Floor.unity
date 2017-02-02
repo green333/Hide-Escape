@@ -4291,7 +4291,7 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
 --- !u!1 &397824522
 GameObject:
   m_ObjectHideFlags: 0
@@ -4351,7 +4351,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
 --- !u!1 &399492354
 GameObject:
   m_ObjectHideFlags: 0
@@ -6669,7 +6669,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 31
 --- !u!1001 &716325927
 Prefab:
   m_ObjectHideFlags: 0
@@ -9969,8 +9969,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 496946, guid: faa0e9f0b78d42444bb4745a991d2fe2, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11490630, guid: faa0e9f0b78d42444bb4745a991d2fe2, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1634330365}
+    - target: {fileID: 11490630, guid: faa0e9f0b78d42444bb4745a991d2fe2, type: 2}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 1403064753}
     - target: {fileID: 11490630, guid: faa0e9f0b78d42444bb4745a991d2fe2, type: 2}
       propertyPath: obj.Array.data[0]
       value: 
@@ -12665,7 +12673,7 @@ Transform:
   m_LocalScale: {x: 5.05879307, y: 1, z: 2.91194272}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
 --- !u!65 &1598108654
 BoxCollider:
   m_ObjectHideFlags: 0
