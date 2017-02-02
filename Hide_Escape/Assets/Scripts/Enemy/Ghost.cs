@@ -4,6 +4,9 @@ using System.Collections;
 public class Ghost : MonoBehaviour {
 
     [SerializeField]
+    public P_Player player;
+
+    [SerializeField]
     LightSystem light;
 
     [SerializeField]
@@ -27,6 +30,10 @@ public class Ghost : MonoBehaviour {
     Vector3 direction;
 
 
+
+    bool flag;
+
+
     enum State
     {
         Patrol,
@@ -46,11 +53,20 @@ public class Ghost : MonoBehaviour {
        }
 
        animator.SetBool("W_Flag", true);
-	
-	}
+
+        flag= player.GetHIDE_NOW();
+
+
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate() {
+
+        if (flag)
+        {
+            state = State.Patrol;
+            return;
+        }
 
         DistanceDetermination();
         switch (state)
@@ -111,7 +127,7 @@ public class Ghost : MonoBehaviour {
             state = State.Patrol;
             return;
         }
-
+        
         if(light.GetIsLighting())
         {
             state = State.Go_Away;

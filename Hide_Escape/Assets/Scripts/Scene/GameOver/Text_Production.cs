@@ -117,7 +117,6 @@ public class Text_Production : MonoBehaviour {
     //-------------------------------------
     void Update() {
 
-        Debug.Log(data.GetComponent<Data_Retention>().SceneName);
 
         switch (pro)
         {
@@ -168,7 +167,6 @@ public class Text_Production : MonoBehaviour {
         }
 
         float X = Input.GetAxis("Left Joystick Horizontal");
-        Debug.Log(X);
 
         if (X < -0.5f && !enterflg && com == Command.END)
         {
