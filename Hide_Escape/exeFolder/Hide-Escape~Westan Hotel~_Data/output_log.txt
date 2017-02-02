@@ -2,21 +2,28 @@ Initialize engine version: 5.2.3f1 (f3d16a1fa2dd)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA Quadro K1000M  (ID=0xffc)
+    Renderer: NVIDIA Quadro K1000M (ID=0xffc)
     Vendor:   NVIDIA
-    VRAM:     1995 MB
+    VRAM:     1989 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\2130073\Documents\GitHub\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.150 seconds
+Platform assembly: C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.172 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
+Platform assembly: C:\授業関連\卒業制作\Hide-Escape\Hide_Escape\exeFolder\Hide-Escape~Westan Hotel~_Data\Managed\System.dll (this message is harmless)
+Script error (MapCamera): Update() can not be a coroutine.
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Mono/MonoScriptCache.cpp Line: 427)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 25e8 -> priority: 1 
