@@ -143,7 +143,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (!_seDic.ContainsKey(name))
         {
-            Debug.Log(name + "という名前のSEはありません");
+            //Debug.Log(name + "という名前のSEはありません");
             return;
         }
 
@@ -157,7 +157,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (!_seDic.ContainsKey(name))
         {
-            Debug.Log(name + "という名前のSEはありません");
+            //Debug.Log(name + "という名前のSEはありません");
             return;
         }
 
@@ -187,7 +187,7 @@ public class AudioManager : Singleton<AudioManager>
 
         if (!_bgmDic.ContainsKey(bgm_name))
         {
-            Debug.Log(bgm_name + "という名前のBGMはありません");
+            //Debug.Log(bgm_name + "という名前のBGMはありません");
             return;
         }
 
