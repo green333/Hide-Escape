@@ -137,14 +137,14 @@ public class BaceEnemy : MonoBehaviour
     {
         Vector3 target_Vec=target.transform.position-transform.position;
         float angle = Vector3.Angle(transform.forward, target_Vec);
-        Debug.DrawRay(transform.position, target_Vec, Color.black, 0, false);
+        //Debug.DrawRay(transform.position, target_Vec, Color.black, 0, false);
 
         if (angle <= view_angle)
         {
 
             if(target_Vec.magnitude<view_length)
             {
-                Debug.DrawRay(transform.position, target_Vec, Color.blue, 0, false);
+                //Debug.DrawRay(transform.position, target_Vec, Color.blue, 0, false);
 
                 return true;
             }

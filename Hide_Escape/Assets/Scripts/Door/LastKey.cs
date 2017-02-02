@@ -32,6 +32,7 @@ public class LastKey : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            AudioManager.Instance.PlaySE("item_get");
             keyGetFlg = false;
         }
     }
