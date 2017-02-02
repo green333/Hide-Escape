@@ -31,7 +31,15 @@ public class InsectZombie : MonoBehaviour {
 	// Update is called once per frame
     void FixedUpdate()
     {
-        if(light.GetIsLighting()&&flag!=true)
+
+        if(flag)
+        {
+            animator.SetBool("A_Flag", false);
+            agent.SetDestination(transform.position);
+            return;
+        }
+
+        if(light.GetIsLighting())
         {
             Approach();
         }

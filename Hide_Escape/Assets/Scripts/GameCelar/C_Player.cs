@@ -4,60 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-class P_param
-{
-    public Vector3 pos;
 
-    //更新毎に初期化する変数
-    public float rotation; //回転量 ※ Xの値は使用しない
-    public Vector3 rotateAxis;//回転軸　※Zの値は使用しない
-    public Vector3 movement; //移動量 
-
-    public Vector3 rotateVec;//回転量
-
-
-    void Start()
-    {
-        pos = Vector3.zero;
-        rotation = 0.0f;
-        movement = Vector3.zero;
-    }
-
-    public void Update(Vector3 pos)
-    {
-        this.pos = pos;
-
-    }
-
-    public void ResetMovement()
-    {
-        movement = Vector3.zero;
-    }
-
-    public void ResetRotation()
-    {
-        rotation = 0.0f;
-    }
-
-    public Vector3 GetAddedMovement()
-    {
-
-        Vector3 score = Vector3.zero;
-
-        float x = pos.x + movement.x;
-        float y = pos.y + movement.y;
-        float z = pos.z + movement.z;
-
-        score.Set(x, y, z);
-
-        return score;
-    }
-
-    public void SetPos(Vector3 p)
-    {
-        pos = p;
-    }
-}
 
 
 public class C_Player : MonoBehaviour {
@@ -67,7 +14,60 @@ public class C_Player : MonoBehaviour {
 
     [SerializeField]
     private bool RightStick_Horizontal;
+    class P_param
+    {
+        public Vector3 pos;
 
+        //更新毎に初期化する変数
+        public float rotation; //回転量 ※ Xの値は使用しない
+        public Vector3 rotateAxis;//回転軸　※Zの値は使用しない
+        public Vector3 movement; //移動量 
+
+        public Vector3 rotateVec;//回転量
+
+
+        void Start()
+        {
+            pos = Vector3.zero;
+            rotation = 0.0f;
+            movement = Vector3.zero;
+        }
+
+        public void Update(Vector3 pos)
+        {
+            this.pos = pos;
+
+        }
+
+        public void ResetMovement()
+        {
+            movement = Vector3.zero;
+        }
+
+        public void ResetRotation()
+        {
+            rotation = 0.0f;
+        }
+
+        public Vector3 GetAddedMovement()
+        {
+
+            Vector3 score = Vector3.zero;
+
+            float x = pos.x + movement.x;
+            float y = pos.y + movement.y;
+            float z = pos.z + movement.z;
+
+            score.Set(x, y, z);
+
+            return score;
+        }
+
+        public void SetPos(Vector3 p)
+        {
+            pos = p;
+        }
+    }
 
 
     private bool RUN = false;
@@ -153,6 +153,8 @@ public class C_Player : MonoBehaviour {
         transform.position.Set(transform.position.x, 1, transform.position.z);//後で直す
         param = new P_param();
         param.pos = transform.position;
+
+
 
         for (int i = 0; i < knock.Length; i++)
         {
@@ -246,7 +248,7 @@ public class C_Player : MonoBehaviour {
                 break;
 
             case Game_Next.OVER:
-                Color_Add(over_fade, 0.05f, "GameClear");
+                Color_Add(over_fade, 0.05f, "GameOver");
                 break;
         }
     }
@@ -442,8 +444,8 @@ public class C_Player : MonoBehaviour {
         else
         {
             param.rotateVec.y -= Input.GetAxis("Right Joystick Horizontal") * TURNING;
-
         }
+
 
         if (RightStick_Vertical)
         {
@@ -495,6 +497,25 @@ public class C_Player : MonoBehaviour {
 
     private void ObjectParamUpdate()
     {
+
+        if(Input.GetButtonDown("Back Botton"))
+        {
+            switch (input_mode)
+            {
+                case Input_mode.KEYBOARD:
+                    input_mode = Input_mode.GAMEPAD;
+                    break;
+
+                case Input_mode.GAMEPAD:
+                    input_mode = Input_mode.KEYBOARD;
+                    break;
+
+                default:
+                    break;
+
+            }
+
+        }
 
         switch (input_mode)
         {
@@ -570,7 +591,8 @@ public class C_Player : MonoBehaviour {
             knock[(int)order_num].knock_num++;
         }
 
-        if (Input.GetKey(KeyCode.Space) && AudioManager.Instance.PlaySE_End())
+        if ((Input.GetKey(KeyCode.KeypadEnter) ||
+            Input.GetButton("Botton_B") )&& AudioManager.Instance.PlaySE_End())
         {
             AudioManager.Instance.PlaySE("nock");
             kncok_f = true;
